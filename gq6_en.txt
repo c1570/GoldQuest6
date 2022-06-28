@@ -257,7 +257,7 @@
   910 forii=4topstep-1:n$(ii)=n$(ii-1):p(ii)=p(ii-1):r$(ii)=r$(ii-1):next
   920 n$(p-1)=n$:p(p-1)=pu:r$(p-1)=r$
   922 print"{gry3}"n$"{wht} becomes a {cyn}"e$" {wht}and"
-  924 print"{wht}enters the hall of the famous dwarfs!":gosub9320:return
+  924 print"{wht}enters the hall of the famous dwarves!":gosub9320:return
   930 ifpu<500thenr$="beer nursling"
   931 ifpu>499thenr$="tunnel digger"
   932 ifpu>999thenr$="stone mason"
