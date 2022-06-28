@@ -1,0 +1,237 @@
+var,A%,generic integer (user choice)
+var,A(,
+var,A,Hilfsvariable
+var,A$(,
+var,A$,HIlfsstring
+var,A1%,
+var,A2%,
+var,A3%,
+var,AE,adtbm-elixir
+var,AN,anschlag sound
+var,AS,abschwellen sound
+var,AU,ausklingen sound
+var,B%,
+var,B,
+var,B$(,
+var,B$,
+var,BB%,Anzahl Gold bei erfolgreichem Kampf. Wird jeweils beim NPC meistens per Zufall ermittelt.
+var,BI,Anzahl alkoholische Getränke je Level (urspünglich Biere). Wert wird jeweils zufällig ermittelt. 
+var,BX%,
+var,BY%,
+var,C%,
+var,C$(,
+var,C$,
+var,CF,camis feenklatsche
+var,CO,color memory base
+var,D%,
+var,D,
+var,DX%,current dungeon width-1
+var,DY%,current dungeon height-1
+var,E,
+var,E$,
+var,ES,Anzahl Goldkisten (Gold) je Level (urspünglich Edelsteine). Wert wird jeweils zufällig ermittelt.
+var,EX%,exit x-pos
+var,EY%,exit y-pos
+var,F,fight won flag
+var,F$,
+var,FA,Anzahl Fallen je Level. Wert wird jeweils zufällig ermittelt.
+var,FB,number of fights won against fulgore
+var,FE,Anzahl Feen (Fairy) je Level. Wert wird jeweils zufällig ermittelt.
+var,FH,frequency hi-byte sound
+var,FL,frequency low-byte sound 
+var,FS%(,dungeon builder backtracking array
+var,FX%,used for map field generation
+var,FY%,used for map field generation
+var,FZ%,used for map field generation
+var,G,current player gold
+var,G$,keyboard input string (returned by gosub800)
+var,GN,
+var,GX,current dungeon width
+var,GY,current dungeon height
+var,H,
+var,HA,halten sound
+var,HG,heilige handgranate
+var,I%,number of items in current inventory
+var,I(,
+var,I,
+var,IB,
+var,ID,
+var,II,generic integer index variable
+var,J,
+var,JG,jammets glasperlen
+var,JJ,generic integer index variable
+var,K%(,dungeon array
+var,K%,current dungeon tile content
+var,K,
+var,K$(,enemy symbol on map
+var,K$,enemy label
+var,KA,
+var,KK%,
+var,KO,Anzahl Kobolde je Level. Wert wird jeweils zufällig ermittelt.
+var,KW%,enemy fighting power adjusted to current dungeon level
+var,KW,enemy fighting power
+var,L,current player health
+var,L$,
+var,L1,ring quest end level
+var,LV,current dungeon level
+var,M%(,dungeon 3D view helper/front fields
+var,M%,
+var,M,
+var,MB,current enemy fighting power
+var,N%,randomized enemy base damage
+var,N,
+var,N$(,
+var,N$,player's name
+var,NQ,rune quest flag 1=active
+var,O,
+var,O$,
+var,OK,Anzahl Orks (Orc) je Level. Wert entspricht dem Level.
+var,P(,
+var,P,
+var,PK%,player fighting power including weapon bonus
+var,PM,promille
+var,PR,current player direction
+var,PS,
+var,PU,current player points
+var,PX%,current player x position
+var,PY%,current player y position
+var,Q,PRINT AT SYS helper address
+var,Q$,rune word
+var,R%(,dungeon builder direction helper
+var,R%,
+var,R$(,
+var,R$,
+var,S%,
+var,S,damage in fight
+var,S$,
+var,SC,screen mem base
+var,SI,SID base address
+var,SP,column cursor pos
+var,SW,shmendrics amulett
+var,T,
+var,T$,
+var,TI,system timer
+var,TI$,system clock
+var,TR,
+var,TS,targas schutzzauber
+var,TW,delay time (sec/60)
+var,U,status variable (1=trapdoor 2=run from enemy 3=fulgore fight)
+var,U$,
+var,UT,Zähler für DRAGKINGs. Startwert = 6. Sobald der Wert unter 0 gezählt wird werden die NPCs zufällig ermittelt.
+var,V,
+var,VO%,ring quest remaining orcs count
+var,VQ,ring quest flag
+var,W%,index of current player weapon
+var,W(,player inventory
+var,W,
+var,W$(,item labels
+var,W$,
+var,WD,waffendoppler
+var,WE,Anzahl Ork-Wächter (Guard) je Level. Wert wird jeweils zufällig ermittelt.
+var,WI,Anzahl Wichtel (Gnom) je Level. Wert wird jeweils zufällig ermittelt.
+var,WK,
+var,WP,
+var,X,
+var,XF,
+var,XS,
+var,Y,
+var,YF,
+var,YS,
+var,Z%,
+var,Z,
+var,Z$,
+var,ZE,line cursor pos
+var,ZO,
+sub,20,wait tw 60th secs
+sub,25,convert pm to o$
+sub,26,convert o to o$
+sub,197,completed special mission
+sub,200,print game screen frame
+sub,220,generate and print 3d view
+sub,225,2d map to m%() 3d tiles
+sub,300,print 3d view based on m%()
+sub,460,print 2d map frame
+sub,470,print map content
+sub,500,print character stats
+sub,550,print dragon stats
+sub,570,erase lines 20-24
+sub,670,put kk% to random map pos
+sub,680,put k% to random map pos and print it??
+sub,700,chooser (v: 0 horizontal - 1 vertical - 2 just notice) - return a%
+sub,750,wait for key - v=3 for message
+sub,800,user input string
+sub,900,add new high score table entry
+sub,930,get player rank
+sub,960,get player achievements
+sub,1000,generate dungeon
+sub,1600,fight
+sub,1670,win
+sub,1673,win using jg
+sub,1700,show inventory
+sub,2000,get next turn from key/joy
+sub,4000,drink encounter
+sub,4100,gold encounter
+sub,4200,trader encounter
+sub,4211,add thing to inventory
+sub,4400,enemy encounter (text)
+sub,4410,fleeing
+sub,4420,move player to random new position
+sub,5000,trap encounter
+sub,5020,lava trap
+sub,5030,thorns trap
+sub,5040,rubble trap
+sub,5050,arrow trap
+sub,5060,teleportal trap
+sub,5070,hole trap
+sub,5100,fairy encounter
+sub,5200,goblin/kobold encounter
+sub,5300,orc encounter
+sub,5400,orc guard encounter
+sub,5500,gnome encounter
+sub,5540,gnome attack
+sub,5600,troll encoutner
+sub,5700,dragon encounter
+sub,5800,fulgore encounter
+sub,6000,defeat screen
+sub,6200,dragon fighter encounter
+sub,7100,print high score list
+sub,7110,print credits
+sub,7120,print story
+sub,7800,descend to next level
+sub,7805,fall down to next level
+sub,7897,set current dragon map char
+sub,7900,play cards
+sub,7960,show cards
+sub,8000,tavern main screen
+sub,8198,delete lines from x to 24
+sub,8200,start gnome quest
+sub,8240,end gnome quest
+sub,8300,print health and booze
+sub,8400,start ring quest
+sub,8500,end ring quest
+sub,8570,ring quest - player fought an orc
+sub,8580,ring quest - player fled from an orc
+sub,9000,title screen
+sub,9050,check for music helper - f=1 iff found
+sub,9060,set up charset
+sub,9070,switch charset
+sub,9100,init variables
+sub,9200,start music track
+sub,9250,stop music track
+sub,9260,pause/unpause music
+sub,9270,play sound via music helper for tw 60th seconds
+sub,9290,get drive id to id
+sub,9300,read high score table from disk
+sub,9320,write high score table to disk
+sub,9330,generate default high score table
+sub,9610,play sound 1
+sub,9620,play sound 2
+sub,9630,play sound 3
+sub,9640,play sound 4
+sub,9650,play sound 5
+sub,9660,play sound 6
+sub,9670,play sound 7
+sub,9680,play sound 8
+sub,9690,visualize fight
+sub,9720,print fight health bars
+sub,9900,give player a second chance

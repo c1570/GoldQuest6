@@ -1,0 +1,1110 @@
+    1 ifpeek(792)=71thenpoke792,193:rem version 1.2 de 29.05.-1
+   10 forii=1to18:reada:next:data11,,3,4,2,2,64,,2,9,2,10,26,,1,4,6,8:rem sid data, distremove
+   15 si=54272:gosub9100:gosub9300:goto30
+   20 ti$="000000":forze=-1to.:ze=(ti<tw):next:return
+   25 o=int(pm*100)
+   26 z$=str$(o):z$=right$(z$,len(z$)-1):z$=right$("00"+z$,3)
+   27 o$=left$(z$,1)+"."+right$(z$,2):return
+   30 sc=1065:co=55296:gosub9060:printchr$(8)"{blk}{clr}":poke53280,0:poke53281,0:l=100:lv=1:pm=1:g=1:w%=1:ut=6
+   32 rem reset - punkte, inv, drachen, items, fulgi, quests, haendlerzaehler
+   34 pu=.:i%=.:d%=.:ae=.:cf=.:wd=.:sw=.:jg=.:ts=.:hg=.:s%=.:fb=.:nq=.:vq=.:vo%=.:l1=.:vh%=.:h%=.
+   35 rem 12 missionen - drachenfreund zombiejaeger zocker feenklatscher feigling
+   36 rem biertrinker sparschwein stocknuechtern abstinenz spassbremse gourmet heiliger
+   37 ga%=.:df%=.:zk%=.:zo%=.:fk%=.:fg%=.:os%=.:gl%=.:nu%=.:ab%=.:es%=.:gt%=.:he%=.
+   38 q$="":forii=1to28:w(ii,2)=.:next:rem waffen/items/alk
+   50 gosub9000:x=16:gosub8198
+   54 sysq,1,17,"{wht}nenne deinen namen: ";:a%=1:gosub800
+   61 ifg$=""theng$="namenloser":printg$;
+   62 n$=g$:print:ifn$="schummlor"thenprint"{down}{down}{wht} w\hle die startebene:{yel}";:v=2:h=15:gosub700:lv=a%
+   63 a$=" abenteurer":b$=" geizkragen":c$=" zechpreller":f$=" krieger"
+   64 x=16:gosub8198:sysq,0,16,"{wht}w\hle deinen zwerg:":print"{wht}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{pur}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{yel}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{gry2}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{orng}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{rvof}"
+   65 sysq,0,18,"{wht}{rvon} charakter  {pur}prom{yel}gold{gry2} waffe  {orng} inventar {rvof}"
+   66 sysq,13,19,"{pur}2.5{yel}  3  {gry1}speer   {cyn}igel-met{gry3}":sysq,13,20,"{pur}0.5{yel}  9  {gry1}dolch   {grn}murmeln"
+   67 sysq,13,21,"{pur}3.0{yel}  0  {gry1}dolch   {cyn}orkbier{gry3}":sysq,13,22,"{pur}1.5{yel}  2  {gry1}schwert {lred}klatsche{gry3}"
+   68 print"{up}{up}{up}{up}"a$chr$(13)b$chr$(13)c$chr$(13)f$;
+   69 v=1:h=4:gosub700:ifa%=1theng=3:pm=2.5:w%=2:w(22,2)=1:i%=1
+   70 ifa%=2theng=9:pm=0.5:w(18,2)=1:i%=1:a$=b$
+   71 ifa%=3theng=0:pm=3:w(24,2)=1:i%=1:a$=c$
+   72 ifa%=4theng=2:pm=1.5:w%=3:w(17,2)=1:i%=1:a$=f$
+   73 rem g$="{wht}ende!":e$="":lv=9:pu=43210:g=1234:nq=2:vq=2:d%=7:s%=1:goto5900
+   74 rem lv=6:l1=6:vq=1:vo%=2:rem zweite quest letzter ork vo%=orkcount
+   75 rem vo% =0 bestanden, =-1 frau tot, >0 nicht gesucht
+   76 rem jg=2:lv=6:fb=1:l1=.:rem start 2. quest
+   77 rem lv=4:nq=1:q$="123456": rem 1. quest done
+   78 x=16:gosub8198:sysq,0,16,"{wht}steuerung":print"{cyn}  bewegen: {gry3}joystick port 2 {gry1}/ {gry3}wasd"
+   79 print"{cyn} inventar: {gry3}feuerknopf{red}Q {gry1}/ {gry3}return {gry1}/ {gry3}i":print"{cyn} aufgeben: {gry3}f1{down}{wht}"
+   80 printn$", der"a$"!":a$="":gosub7800:tw=180:gosub20:poke198,.
+  100 print"{clr}":ka=0:u=0:z=0:gm%=lv*20+60:gosub9250:gosub460:gosub200:ifd%>.thengosub550
+  101 ifjg=-1thenjg=.
+  110 sysq,px%+1,py%+1,"{wht}"c$(pr):gosub220:gosub500
+  111 ifdf%=2thena$="drachenfreund":df%=3:gosub197
+  112 ifzk%=12thena$="zombiej\ger":zk%=13:gosub197
+  113 ifzo%=5thena$="zocker":zo%=6:gosub197
+  114 iffk%=3thena$="feenklatscher":fk%=4:gosub197
+  115 iffg%=10thena$="feigling":fg%=11:gosub197
+  116 ifos%=10thena$="biertrinker":os%=11:gosub197
+  117 ifhe%=2thena$="heiliger":he%=3:gosub197
+  118 ifnu%=.andpm<0.01thena$="stockn]chtern":nu%=1:gosub197
+  119 ifgl%=.andg>249thena$="sparschwein":gl%=1:gosub197
+  120 ifes%=2thena$="spa~bremse":es%=3:gosub197
+  122 ifgt%=4thena$="gourmet":gt%=5:gosub197
+  130 gosub2000:ifpm<2thenl=l-1
+  132 ifg>gm%thenl=l-1
+  134 ifl<.thenl=.
+  136 pm=pm-.01:ifpm<.thenpm=.
+  138 ife$="{f1}"theng$="{wht}du hast aufgegeben!":a%=-1:goto7000
+  140 ife$="+"then7200
+  142 ifl<1theng$="{wht}du bist gestorben! {lred}0% leben":a%=-1:goto7000
+  144 ifpm>3.51thenifsw=.theng$="{wht}du bist gestorben! {pur}]ber 3.5 promille":a%=-1:goto7000
+  150 n%=int(rnd(.)*3)*lv:iflv<3thenn%=0
+  155 a%=k%(px%,py%)-2:ifa%<.then110
+  160 ifa%>13then195:rem >12
+  165 ifa%=.then7200:rem exit door
+  170 gosub225
+  175 ona%gosub4200,4000,5000,4100,5100,5200,5300,5400,5500,5600,5700,5800,6200
+  185 pu=pu+5:ifu=1thenlv=lv+1:gosub7805:goto100:rem falltuer
+  188 ifu=2thenpx%=xf:py%=yf:u=.:gosub570:rem flucht
+  189 ifu=3then5880:rem fulgore kampf
+  190 goto110
+  195 a%=a%-13:sysq,1,21,"{gry3}an der wand siehst du rune"a%" {up}{gry3}{CBM-@}{down}{left}{left}{CBM-M}{wht}{rvon}"mid$(q$,a%,1)"{rvof}{gry3}{CBM-G}{down}{left}{left}{CBM-T}":rem -12
+  196 print"{cyn} merke sie dir gut!";:k%(px%,py%)=1:gosub700:gosub570:goto110
+  197 sysq,1,20,"{gry3}mission {wht}"a$" {gry3}erf]llt!{yel}":ga%=ga%+1
+  198 sysq,0,21,ga%"{cyn}von {yel}12{cyn} abgeschlossen";:d=10:gosub750:gosub570:return
+  200 sysq,23,0,"{brn}{CBM-D}{CBM-O}{CBM-O}{CBM-P}{CBM-O}{CBM-O}{CBM-P}{CBM-P}{CBM-O}{CBM-O}{CBM-P}{CBM-O}{CBM-O}{CBM-F}":forii=1to10step2:sysq,23,ii,"{CBM-N}            {CBM-H}"
+  205 sysq,23,ii+1,"{CBM-L}            {CBM-J}":next:sysq,23,11,"{CBM-C}{CBM-U}{CBM-U}{CBM-Y}{CBM-U}{CBM-U}{CBM-Y}{CBM-Y}{CBM-U}{CBM-U}{CBM-Y}{CBM-U}{CBM-U}{CBM-V}"
+  210 sysq,0,18,"{orng}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}";
+  215 sysq,0,19,"{rvon} gold quest 6           ebene";:print"{rvon}"lv"{left}"left$("         ",11-len(str$(lv))):return
+  220 gosub225:poke780,7:gosub9200:gosub300:gosub9250:return
+  225 forii=.to12:m%(ii)=.:next
+  226 v=.:n=.:a1%=1:a2%=2:a3%=3:ifpr=0then230
+  227 ifpr=1then250
+  228 a1%=-1:a2%=-2:a3%=-3:ifpr=3thengoto250
+  230 ifk%(px%-a1%anddx%,py%-a3%anddy%)=.thenm%(0)=1
+  231 ifk%(px%+a1%anddx%,py%-a3%anddy%)=.thenm%(1)=1
+  232 k%=k%(px%,py%-a3%anddy%):ifk%=.thenm%(2)=1:n=1
+  233 ifk%=2thenm%(2)=2
+  234 ifk%(px%-a1%anddx%,py%-a2%anddy%)=.thenm%(3)=1
+  235 ifk%(px%+a1%anddx%,py%-a2%anddy%)=.thenm%(4)=1
+  236 k%=k%(px%,py%-a2%anddy%):ifk%=.thenm%(5)=1:n=2
+  237 ifk%=2thenm%(5)=2
+  238 ifk%>1andk%<16thenm%(12)=1:rem <15
+  239 ifk%(px%-a1%anddx%,py%-a1%anddy%)=.thenm%(6)=1
+  240 ifk%(px%+a1%anddx%,py%-a1%anddy%)=.thenm%(7)=1
+  241 k%=k%(px%,py%-a1%anddy%):ifk%=.thenm%(8)=1:n=3:goto245
+  242 ifk%=2thenm%(8)=2
+  243 ifk%>2andk%<16thenm%(11)=1:rem <15
+  244 k=sc+px%+(40*(py%-a1%anddy%)):ifpeek(k)=160thenpokek,164
+  245 k%=k%(px%-a1%anddx%,py%):ifk%=.ork%=2thenm%(9)=1:goto247
+  246 k=sc+(px%-a1%anddx%)+py%*40:ifpeek(k)=160thenpokek,164
+  247 k%=k%(px%+a1%anddx%,py%):ifk%=.ork%=2thenm%(10)=1:return
+  248 k=sc+(px%+a1%anddx%)+py%*40:ifpeek(k)=160thenpokek,164
+  249 return
+  250 ifk%(px%+a3%anddx%,py%-a1%anddy%)=.thenm%(0)=1
+  251 ifk%(px%+a3%anddx%,py%+a1%anddy%)=.thenm%(1)=1
+  252 k%=k%(px%+a3%anddx%,py%):ifk%=.thenm%(2)=1:n=1
+  253 ifk%=2thenm%(2)=2
+  254 ifk%(px%+a2%anddx%,py%-a1%anddy%)=.thenm%(3)=1
+  255 ifk%(px%+a2%anddx%,py%+a1%anddy%)=.thenm%(4)=1
+  256 k%=k%(px%+a2%anddx%,py%):ifk%=.thenm%(5)=1:n=2
+  257 ifk%=2thenm%(5)=2
+  258 ifk%>1andk%<16thenm%(12)=1:rem <15
+  259 ifk%(px%+a1%anddx%,py%-a1%anddy%)=.thenm%(6)=1
+  260 ifk%(px%+a1%anddx%,py%+a1%anddy%)=.thenm%(7)=1
+  261 k%=k%(px%+a1%anddx%,py%):ifk%=.thenm%(8)=1:n=3:goto265
+  262 ifk%=2thenm%(8)=2
+  263 ifk%>2andk%<16thenm%(11)=1:rem <15
+  264 k=sc+(px%+a1%anddx%)+py%*40:ifpeek(k)=160thenpokek,164
+  265 k%=k%(px%,py%-a1%anddy%):ifk%=.ork%=2thenm%(9)=1:goto267
+  266 k=sc+px%+(py%-a1%anddy%)*40:ifpeek(k)=160thenpokek,164
+  267 k%=k%(px%,py%+a1%anddy%):ifk%=.ork%=2thenm%(10)=1:return
+  268 k=sc+px%+(py%+a1%anddy%)*40:ifpeek(k)=160thenpokek,164
+  270 return
+  300 a$="{left}{left}{left}{left}{left}{left}":b%=.:c%=.:ifm%(8)=.then305
+  301 m%(5)=.:m%(2)=.:m%(12)=.:ifm%(6)>.orm%(9)>.thenm%(0)=.:m%(3)=.
+  302 ifm%(7)>.orm%(10)>.thenm%(1)=.:m%(4)=.
+  303 ifm%(9)>.thenm%(6)=.
+  304 ifm%(10)>.thenm%(7)=.
+  305 ifm%(5)=.then308
+  306 m%(2)=.:m%(12)=.:ifm%(6)>.thenm%(0)=.
+  307 ifm%(7)>.thenm%(1)=.
+  308 ifm%(3)>.thenm%(0)=.
+  309 ifm%(4)>.thenm%(1)=.
+  310 sysq,24,1,"";:forii=1to10:print"            {down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";:next
+  311 ifm%(8)=1then370
+  312 ifm%(5)=1then340
+  315 ifm%(3)=1then320
+  316 ifm%(0)=1thensysq,27,4,"{gry2}{CBM-@}{down}{left}{CBM-M}{down}{left}{CBM-T}";
+  320 ifm%(4)=1then330
+  322 ifm%(1)=1thensysq,32,5,"{gry2}{CBM-G}{up}{left}{CBM-@}{down}{down}{left}{CBM-T}";
+  330 ifm%(2)=.orn>1then334
+  332 sysq,28,4,"{gry2}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{down}{left}{left}{left}{left}{CBM-G}  {CBM-M}{down}{left}{left}{left}{left}{CBM-T}{CBM-T}{CBM-T}{CBM-T}";
+  334 ifn=3then370
+  336 ifm%(2)=2thenifn<2thensysq,28,4,"{gry2}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{down}{left}{left}{left}{left}{CBM-G}{orng}{rvon}{CBM-K}{rvof}{CBM-K}{gry2}{CBM-M}{down}{left}{left}{left}{left}{CBM-T}{CBM-T}{CBM-T}{CBM-T}";
+  340 ifm%(6)=1then344
+  342 ifm%(3)=1thensysq,25,4,"{gry3}{CBM-T}P{down}{left}{left} {CBM-M}{down}{left}{left}{CBM-@}{SHIFT-@}";
+  344 ifm%(3)=1andm%(5)=.thensysq,27,4,"{gry3}M{down}{left}{CBM-M}{down}{left}N";
+  350 ifm%(7)=1then354
+  352 ifm%(4)=1thensysq,33,4,"{gry3}O{CBM-T}{down}{left}{left}{CBM-G} {down}{left}{left}L{CBM-@}";
+  354 ifm%(4)=1andm%(5)=.thensysq,32,4,"{gry3}N{down}{left}{CBM-G}{down}{left}M";
+  360 ifm%(5)=.orn>2then364
+  362 sysq,27,4,"{gry3}O{CBM-T}{CBM-T}{CBM-T}{CBM-T}P{down}{left}{left}{left}{left}{left}{left}{CBM-G}    {CBM-M}{down}{left}{left}{left}{left}{left}{left}L{CBM-@}{CBM-@}{CBM-@}{CBM-@}{SHIFT-@}";
+  364 ifm%(5)=2andn<3thensysq,27,4,"{gry3}O{CBM-T}{orng}{rvon}&&{rvof}{gry3}{CBM-T}P{down}{left}{left}{left}{left}{left}{left}{CBM-G} {orng}{rvon}&&{rvof}{gry3} {CBM-M}{down}{left}{left}{left}{left}{left}{left}L{CBM-@}{orng}{rvon}&&{rvof}{gry3}{CBM-@}{SHIFT-@}";
+  370 ifm%(9)=.thensysq,24,2,"{wht}P{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{SHIFT-@}";
+  374 ifm%(6)=1andm%(8)=.thensysq,25,2,"{wht}M{down}M{down}{left}{left} {CBM-M}{down}{left}{left} {CBM-M}{down}{left}{left} {CBM-M}{down}{left}{left} N{down}{left}{left}N";
+  380 ifm%(10)=.thensysq,35,2,"{wht}O{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}L";
+  384 ifm%(7)=1andm%(8)=.thensysq,34,2,"{wht}N{down}{left}{left}N{down}{left}{CBM-G} {down}{left}{left}{CBM-G} {down}{left}{left}{CBM-G} {down}{left}{left}M {down}{left}M";
+  386 ifm%(12)=.then390
+  388 ifm%(5)<>2thenifn<3thensysq,29,6,"{blu}{rvon}?{rvof}";
+  390 ifm%(8)<>1then400
+  392 sysq,25,2,"{wht}O{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}P{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+  394 forii=3to7:print"{CBM-G}        {CBM-M}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";:next:print"L{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{CBM-@}{SHIFT-@}";
+  400 ifm%(9)=1thensysq,24,1,"{wht}M{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}{CBM-M}{down}{left}N";
+  402 ifm%(10)=1thensysq,35,1,"{wht}N{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}{CBM-G}{down}{left}M";
+  404 ifm%(11)=1thensysq,28,7,"{lblu}U{SHIFT-*}I{down}{left}{left}UK{down}{left}{left}.";
+  406 ifm%(8)<>2thenreturn
+  410 sysq,25,2,"{wht}O{CBM-T}{gry2}{rvon}P{SHIFT-@}{SHIFT-@}{SHIFT-@}{SHIFT-@}P{rvof}{wht}{CBM-T}P{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+  412 forii=3to7:print"{CBM-G} {gry2}{rvon}P{orng}{CBM-N}{CBM-N}{CBM-N}{CBM-N}{gry2}P{rvof} {wht}{CBM-M}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";:next
+  414 print"L{CBM-@}{gry2}{rvon}P{orng}{CBM-N}{CBM-N}{CBM-N}{CBM-N}{gry2}P{rvof}{wht}{CBM-@}{SHIFT-@}{left}{left}{left}{left}{up}{up}{up}{rvon}{orng}{CBM-F}{rvof}";
+  420 return
+  460 print"{home}{brn} ";:forii=1togx/4:print"{CBM-P}{CBM-O}{CBM-P}{CBM-@}";:next:print
+  462 forii=1togy:print"{rvon}"chr$(180+rnd(.)*2);
+  463 printleft$("                ",gx)chr$(170+int(rnd(.)*2)*12):next
+  464 print"J";:forii=1togx/4:print"{CBM-U}{CBM-Y}{CBM-T}{CBM-Y}";:next:print"{left}{rvon}[]":print"{up}{rvon}[]":return
+  470 ka=1
+  471 forii=0togy-1:sysq,1,ii+1,"";:forjj=0togx-1:printk$(k%(jj,ii));:next:next
+  472 return
+  500 sysq,20,0,"{rvof}{gry1}n{down}{left}{left}w{gry2}{rvon}\{rvof}{gry1}o{down}{left}{left}s{left}{up}{gry3}";:printmid$("{up}n{rght}o{down}s{left}w",pr+pr+1,2)
+  501 ifi%>3thenprint"{rvon}";
+  502 sysq,24,16,"{orng}inventar{rvof}"i%"{left}/4":ifl<.thenl=.
+  505 ifae=1thenprint"{rvon}";:ife$="w"thenl=l+1
+  506 ifl>100thenl=100
+  510 sysq,24,12,"{lred}leben{rvof}"l"{left}%  {pur}"
+  520 ifsw=.thenifpm>2thenprint"{grn}";
+  521 ifsw>.thenpm=3.5:print"{pur}{rvon}";
+  522 sysq,24,13,"promille{rvof}{pur} ";:gosub25:printo$;
+  530 ifg>gm%thensysq,24,14,"{rvon}{red}gold{rvof}"g"{left}   ";:goto533
+  531 sysq,24,14,"{yel}gold"g"{left}   ";
+  533 sysq,24,15,w$(w%):sysq,24,17,"{cyn}punkte"pu:ifwd=1thensysq,20,15,"{rvon}{gry2}2x{rvof}";
+  540 ifhg=2thensysq,20,16,"{rvon}{yel}hg{rvof}";
+  541 ifcf=1thensysq,20,12,"{rvon}{lred}cf{rvof}";
+  542 ifjg>.thensysq,20,13,"{rvon}{grn}jg{rvof}";:rem ifjg=1
+  543 ifts=1thensysq,20,14,"{rvon}{orng}ts{rvof}";
+  545 return
+  550 sysq,19,4,"{rvof}{cyn}d{down}{left}r{down}{left}a{down}{left}c{down}{left}h{down}{left}e{down}{left}n";
+  555 forii=1tod%:sysq,20,3+ii,mid$("{grn}{orng}{red}{blu}{gry2}{gry3}{yel}",ii,1)">{rvon}>":next:return
+  570 forii=20to24:sysq,0,ii,"                                       ";:next
+  571 return
+  670 bx%=rnd(.)*gx:by%=rnd(.)*gy:if(bx%and1)=1thenif(by%and1)=1then670
+  671 ifk%(bx%,by%)>1then670
+  673 ifbx%=px%thenifby%=py%then670
+  676 k%(bx%,by%)=kk%:return
+  680 ifk%=14thenk%(px%,py%)=1:return
+  681 bx%=rnd(.)*gx:by%=rnd(.)*gy
+  682 ifk%(bx%,by%)<>1or(bx%=px%andby%=py%)or(bx%=xfandby%=yf)then681
+  683 k%(px%,py%)=1:sysq,px%+1,py%+1," ":k%(bx%,by%)=k%:ifka=.thenreturn
+  685 sysq,bx%+1,by%+1,k$(k%):return
+  700 sp=peek(211):ze=peek(214):a%=1:poke198,.
+  705 j=peek(56320)and127:ifj<>127then705
+  710 ifv=.thensysq,(a%-1)*b%+c%,ze,"{cyn}>";
+  711 ifv=1thensysq,0,ze-h+a%,"{cyn}>";
+  712 ifv=2thensysq,sp,ze,a%"{left} ";
+  715 j=peek(56320)and127:gett$:ifj=127thenift$=""thent=.:goto715
+  716 ti$="000000"
+  717 ift$="w"ort$="a"ort$="j"ort$="{left}"ort$="{up}"thenj=123
+  718 ift$="s"ort$="d"ort$="n"ort$="{rght}"ort$="{down}"thenj=119
+  720 ifv=.thensysq,(a%-1)*b%+c%,ze," ";
+  722 ifv=1thensysq,0,ze-h+a%," ";
+  724 ifj=126orj=123thenifa%>1thena%=a%-1
+  726 ifj=125orj=119thenifa%<hthena%=a%+1
+  728 if(j=111ort$=chr$(13)orv=3)thenift=.then740
+  730 ifval(t$)>=1thenifval(t$)<=hthena%=val(t$)
+  731 ifti<9thenif(peek(56320)and127)=jthen731
+  732 goto710
+  740 t=1:v=.:h=1:b%=.:c%=.:d=.:ifze<24thensysq,sp,ze,""
+  742 return
+  750 sysq,0,peek(214),"{cyn}>";:ti$="000000":poke198,.:ifd=.thend=2
+  751 ifv=3thenprint"{left} ";:sysq,8,24,"{red}Q {wht}weiter mit taste {red}Q";:d=6000
+  752 j=peek(56320)and127:gett$:ifj=127thent=.
+  754 if(j=111andt=.)ort$<>""orint(ti/60)>dthent=1:d=.:poke198,.:return
+  756 goto752
+  800 g$="":c$="{lblu}{rvon}${rvof}{left}{gry3}":ifa%=1andn$<>""theng$=n$:a%=42
+  802 print"{gry3}"g$c$;
+  810 j=peek(56320)and127:gete$:ifj=127ande$=""then810
+  811 ifj<>127then830
+  812 printc$;:e=asc(e$):if(e<45ore>57)and(e<65ore>93)ande<>13ande<>20ande<>32then810
+  814 a%=len(g$):ife=13thenprint" {left}";:return
+  816 ife=20anda%>.theng$=left$(g$,a%-1):print"{left}"c$"{rght} {left}{left}";:goto810
+  818 ifa%<11ande<>20theng$=g$+e$:printe$c$;
+  820 goto810
+  830 ifj<>119andj<>123then810
+  831 e=1:iflen(g$)=11orj=123ora%=42thene=41
+  833 a$=mid$("abcdefghijklmnopqrstuvwxyz0123456789.- _^",e,1):print"{wht}"a$"{left}{gry3}";
+  835 tw=9:gosub20
+  840 j=peek(56320)and127:gete$:ifj=127ande$=""then840
+  841 ife$<>""then812
+  842 ifj=111then850
+  844 ifj=119thene=e+1:ife>41thene=1
+  846 ifj=123thene=e-1:ife<1thene=41
+  848 goto833
+  850 tw=10:gosub20:ife=40thene$=chr$(20):goto812
+  852 ife=41thene=13:goto814
+  854 e$=a$:goto812
+  900 p=0:forii=4to0step-1:ifpu>p(ii)thenp=ii+1:next
+  902 gosub930:e$=r$:gosub960
+  904 ifp=0orn$="schummlor"then950
+  908 ifp=4then920
+  910 forii=4topstep-1:n$(ii)=n$(ii-1):p(ii)=p(ii-1):r$(ii)=r$(ii-1):next
+  920 n$(p-1)=n$:p(p-1)=pu:r$(p-1)=r$
+  922 print"{gry3}"n$"{wht} wird als {cyn}"e$" {wht}in"
+  924 print"der ruhmeshalle der zwerge verewigt!":gosub9320:return
+  930 ifpu<500thenr$="biers\ugling"
+  931 ifpu>499thenr$="tunnelgr\ber"
+  932 ifpu>999thenr$="steinmetz"
+  933 ifpu>1499thenr$="bergwerker"
+  936 ifpu>2999thenr$="schatzsucher"
+  937 ifpu>4999thenr$="schmied"
+  938 ifpu>7499thenr$="zwergenheld"
+  939 ifpu>9999thenr$="langbart"
+  940 ifpu>13999thenr$="runenpriester"
+  941 ifpu>16999thenr$="zwergenk[nig"
+  942 return
+  950 print"{gry3}"n$"{wht} erzielte{yel}"pu"{wht}punkte und":print"schafft es als {cyn}"e$" {wht}leider"
+  952 print"nicht in die ruhmeshalle der zwerge.":return
+  960 s$="{orng}"+right$(str$(lv),2):q$=" {rvon}":ifnq=2thenq$="{rvon}{brn}A"
+  964 s$=s$+q$:q$="{rght}":ifvq=2thenq$="{red}X"
+  965 s$=s$+q$:q$="{rght}":ifd%>.thend%=d%-1:gosub7897:q$=k$(13)
+  966 s$=s$+q$:q$="{rght}":ifs%=1thenq$="{pur}@"
+  968 r$=s$+q$+"{rvof} {cyn}"+r$:return
+ 1000 gx=16:gy=16:iflv<6thengx=8:gy=16
+ 1015 iflv<5thengx=16:gy=8
+ 1017 iflv<4thengx=16:gy=4
+ 1020 iflv<3thengx=8:gy=8
+ 1021 iflv<2thengx=8:gy=4
+ 1022 m%=.:fx%=.:fy%=.:fz%=-1:dx%=gx-1:dy%=gy-1
+ 1025 forii=.tody%:forjj=.todx%:k%(jj,ii)=.:next:next
+ 1030 fx%=int(rnd(.)*gx/2)*2:fy%=int(rnd(.)*gy/2)*2:k%(fx%,fy%)=1:px%=fx%:py%=fy%
+ 1100 fz%=fz%+1:fs%(fz%,.)=fx%:fs%(fz%,1)=fy%:iffz%>m%thenm%=fz%:ex%=fx%:ey%=fy%
+ 1110 r%=.:ifk%(fx%,fy%-2anddy%)=.thenr%(r%)=.:r%=r%+1
+ 1120 ifk%(fx%+2anddx%,fy%)=.thenr%(r%)=1:r%=r%+1
+ 1130 ifk%(fx%,fy%+2anddy%)=.thenr%(r%)=2:r%=r%+1
+ 1140 ifk%(fx%-2anddx%,fy%)=.thenr%(r%)=3:r%=r%+1
+ 1145 ifr%=.then1250
+ 1150 a%=rnd(.)*r%:iffz%=.thenpr=a%
+ 1160 ifr%(a%)=.thenk%(fx%,fy%-1anddy%)=1:fy%=fy%-2anddy%:k%(fx%,fy%)=1
+ 1170 ifr%(a%)=1thenk%(fx%+1anddx%,fy%)=1:fx%=fx%+2anddx%:k%(fx%,fy%)=1
+ 1180 ifr%(a%)=2thenk%(fx%,fy%+1anddy%)=1:fy%=fy%+2anddy%:k%(fx%,fy%)=1
+ 1190 ifr%(a%)=3thenk%(fx%-1anddx%,fy%)=1:fx%=fx%-2anddx%:k%(fx%,fy%)=1
+ 1200 goto1100
+ 1250 iffz%=.thenk%(ex%,ey%)=2:return
+ 1270 fz%=fz%-1:fx%=fs%(fz%,.):fy%=fs%(fz%,1):goto1110
+ 1600 gosub570:m=int(kw/3):mb=int((rnd(1)*m)+1.5-int(m/2)):f=.
+ 1601 s=int(kw-pm*10-mb):ifs<1thens=int(rnd(1)*lv)
+ 1602 kw%=kw/2+lv
+ 1603 if(jg>.andk%=14)then1606
+ 1604 ifjg>.thena$="{rvof}{red}S":gosub1673:goto1660
+ 1606 ifhg=3thenmb=int(rnd(1)*25)+25:hg=0:sysq,20,16,"  "
+ 1607 gosub9900
+ 1609 ifwd=1thenpk%=int(pm*5+.5)+mb+2*w(w%,0):goto1611
+ 1610 pk%=int(pm*5+.5)+mb+w(w%,0):ifpk%<1thenpk%=1
+ 1611 gosub9690:a$=" {wht}den kampf!                  ":ifkw%<=pk%then1613
+ 1612 sysq,1,20,"{wht}du {red}verlierst"a$:gosub680:goto1615
+ 1613 sysq,1,20,"{wht}du {grn}gewinnst"a$:f=1:gosub1670
+ 1614 sysq,14,21,"{yel}gold +"bb%" {wht}punkte +"kw
+ 1615 sysq,1,21,"{lred}leben -"abs(s)"{left}%"
+ 1620 sysq,1,23,k$"{red}"tab(10);:i=kw%:gosub9720
+ 1622 sysq,1,22,"{lgrn}kraft    {grn}";:i=pk%:gosub9720:sysq,1,20,"";
+ 1625 iff>.thenpu=pu+kw:g=g+bb%
+ 1627 ifmb>25thensysq,37,22,"{yel}{rvon}hg"
+ 1628 ifk%=13theniff=1thend%=d%+1
+ 1629 ifk%=14theniff=1theniffb>1thens%=1
+ 1633 k%(px%,py%)=1:l=l-s:a$=""
+ 1634 d=7:gosub750:gosub570:ifd%>.thengosub550
+ 1635 ifk%=14theniffb<2orf=0then1690
+ 1639 iff=.thensysq,1,20,k$" {wht}zieht weiter";:gosub750:return
+ 1640 z=int(rnd(1)*(16+w%+lv)-(kw/10)):b%=int(rnd(1)*3):a%=0
+ 1641 a$="toten ":ifk$="{lred}zombie"thena$="zerhackten ":zk%=zk%+1
+ 1642 sysq,1,20,"{wht}du durchsuchst den "a$k$;:ifk%=13thenprint"n"
+ 1643 ifi%=4then1650
+ 1644 ifz=.thenifw(13,2)=0thenb$=w$(13):w(13,2)=1:i%=i%+1:a%=1
+ 1646 ifz=1orz=2thenifw(22+b%,2)=0thenb$=w$(22+b%):w(22+b%,2)=1:i%=i%+1:a%=1
+ 1648 ifz=3orz=4thenifw(17+b%,2)=0thenb$=w$(17+b%):w(17+b%,2)=1:i%=i%+1:a%=1
+ 1650 ifz=5orz=6thenifw%<12thenw%=w%+1:b$=w$(w%):a%=1
+ 1652 ifz=7orz=8thenb$="{left}{yel}"+str$(b%+lv)+" gold":g=g+b%+lv:a%=1:poke780,6:tw=60:gosub9270
+ 1654 sysq,1,21,"{wht}und findest {gry3}";:ifa%=0thenprint"{wht}nichts{up}";:gosub750:return
+ 1655 printb$"{up}";:gosub750:return
+ 1660 jg=jg-1:sysq,1,20,"{wht}du gibst eine {grn}glasmurmel {gry3}"jg"{left}{left}{left}({rght} ]brig)":f=2:ifk%=13thend%=d%+1:df%=df%+1:gosub550
+ 1661 sysq,1,21,k$"{wht} tauscht{yel}"bb%"gold{wht} und"kw"punkte":pu=pu+kw:g=g+bb%
+ 1662 sysq,1,23,k$" {wht}wird dein freund";:d=6:gosub750:k%(px%,py%)=1:ifvo%>1thenvo%=vo%-1
+ 1663 ifjg=.thensysq,20,13,"  {down}{down}{down}{down}{down}{down}{down}{down}{down}":ifk%=9ork%=10thenjg=-1
+ 1665 return
+ 1670 ifk%=14theniffb<2thenreturn
+ 1671 ifk%=14theniffb=2thenpoke780,5:tw=60:gosub9270
+ 1672 a$="x"
+ 1673 a%=29:b%=2:c%=1:ifk%=11thenb%=4
+ 1674 ifk%=13thena%=28:b%=4:c%=2
+ 1676 ifk%=14thena%=28
+ 1678 sysq,a%,b%,"{pur}{rvon}"a$spc(c%)a$:c%=0:a$="":return
+ 1690 ifl<1thenreturn
+ 1691 iffb=0thensysq,1,20,"{wht}unser kampf ist noch nicht vorbei!"
+ 1692 iffb=1thensysq,1,20,"{wht}beim n\chsten mal vernichte ich dich!"
+ 1693 iffb=2thensysq,1,20,"{wht}du zwerg wirst mich nie besiegen!"
+ 1694 iff=1thenfb=fb+1:iffb>2thenfb=2
+ 1696 sysq,1,21,k$" {wht}geht zu {orng}ebene"lv+1;
+ 1697 iff=1thensysq,1,23,"{cyn}du hast den schamanen nur geschw\cht":goto1699
+ 1698 sysq,1,23,"{cyn}du hast den schamanen nicht besiegt"
+ 1699 sysq,1,24,"und musst dich ihm erneut stellen{up}";:d=9:gosub750:return
+ 1700 gosub570:ifi%=0thensysq,1,21,"{wht}dein rucksack ist leer";:goto1770
+ 1710 sysq,1,20,"{gry3}rucksack schlie~en":z=1
+ 1715 forii=13to25:ifw(ii,2)=1thensysq,1,20+z,w$(ii);:i(z)=ii:z=z+1
+ 1720 next:v=1:h=z:gosub700:a%=a%-1:ifa%=.thengosub570:return
+ 1740 gosub570:c$="":ifi(a%)=13thengosub470
+ 1744 ifi(a%)=14thenl=101:ae=1:c%=1
+ 1746 ifi(a%)=15thenwd=1
+ 1748 ifi(a%)=16thensw=1
+ 1750 ifi(a%)=17thencf=1:c$="{lred}cf"
+ 1752 ifi(a%)=18thenjg=jg+3:c$="{grn}jg"
+ 1754 ifi(a%)=19thents=1:c$="{orng}ts"
+ 1756 ifi(a%)=20thenhg=2:c$="{yel}hg"
+ 1758 ifi(a%)>20thenl=l+w(i(a%),0):pm=pm+w(i(a%),1):c%=1:ifi(a%)=24ori(a%)=25thenos%=os%+1
+ 1760 ifc%=0thensysq,1,21,"{wht}du nutzt "w$(i(a%))" {rvon}"c$"{rvof}";
+ 1762 ifc%=1thensysq,1,21,"{wht}du trinkst "w$(i(a%));:c%=0:ab%=1
+ 1764 w(i(a%),2)=0:i%=i%-1
+ 1770 gosub750:gosub570:return
+ 2000 sysq,0,21,l$
+ 2001 j=peek(56320)and127:ifj<>127then2001
+ 2002 gete$:j=peek(56320)and127:ifj=127thenife$=""then2002
+ 2003 ifj=126ore$="w"thene$="w":goto2030
+ 2004 ifj=125ore$="s"thene$="s":goto2030
+ 2005 au%=.:ifj=119ore$="d"thene$="d":goto2030
+ 2006 ifj=123ore$="a"thene$="a":goto2030
+ 2007 ifj=111ore$="i"ore$=chr$(13)thene$="i":gosub1700:return
+ 2008 ife$="{f1}"then2100
+ 2010 ifn$<>"schummlor"then2000
+ 2012 ife$="S"thene$="":s%=1:a%=1:goto5900:rem instant win - easter egg
+ 2013 ife$="g"theng=g+20:return:rem gold
+ 2014 ife$="m"thengosub470:return:rem map
+ 2015 ife$="+"thenreturn:rem next lv
+ 2016 ife$="!"thenl=100:pm=3.5:w%=12:ae=1:cf=1:sw=1:ts=1:wd=1:return:rem godmode
+ 2017 rem ife$="&"thenifi%<4thengosub2300:return:rem item
+ 2018 rem ife$="$"thenl=100:ae=1:cf=1:sw=1:ts=1:wd=1:return:rem max doping
+ 2019 rem ife$="0"thensysq,0,22,"{cyn}u"u"{gry3}w%"w%" {pur}rq"nq;q$:rem debug
+ 2020 rem ife$="0"thensysq,0,23,"{lgrn}jg"jg"{grn}vq"vq"vo%"vo%"l1"l1
+ 2021 rem ife$="0"thensysq,0,24,"{cyn}ut"ut"{lblu}f"f"fb"fb"s%"s%"{yel}gm%"gm%;
+ 2022 rem ife$="0"thensysq,0,22,"{lblu}df"df%"es"es%"zk"zk%"zo"zo%"fk"fk%"fg"fg%"os"os%:sysq,0,23,"{yel}ab"ab%"ac"ac%"{orng}gl"gl%"nu"nu%"{grn}ga"ga%
+ 2023 rem ife$="F"thensysq,0,24,"{orng}free ram"fre(.)-65536*(fre(.)<.);
+ 2024 rem ife$="%"thenpm=3.5:return:rem promille max
+ 2025 rem ife$="."thenl=100:k%(px%,py%)=5:return:rem fallentest
+ 2026 rem ife$=","thengosub4000:return:rem tranktest
+ 2027 rem ife$="#"thengosub2200:return:rem npc test
+ 2028 rem ife$="*"thend%=d%+1and7:gosub550:rem drache
+ 2029 goto2000
+ 2030 sysq,px%+1,py%+1," ":x=.:y=.
+ 2040 ife$="d"thenpr=pr+1and3:return
+ 2042 ife$="a"thenpr=pr-1and3:return
+ 2044 ife$="w"thena%=-1:b%=1
+ 2046 ife$="s"thena%=1:b%=-1
+ 2050 ifpr=3thenifk%(px%+a%anddx%,py%)<>.thenx=a%:goto2080
+ 2052 ifpr=1thenifk%(px%+b%anddx%,py%)<>.thenx=b%:goto2080
+ 2054 ifpr=.thenifk%(px%,py%+a%anddy%)<>.theny=a%:goto2080
+ 2056 ifpr=2thenifk%(px%,py%+b%anddy%)<>.theny=b%:goto2080
+ 2070 sysq,1,21,"{wht}autsch!":pokesi+18,129:tw=15:gosub20:pokesi+18,128
+ 2075 sysq,px%+1,py%+1,"{wht}"c$(pr):l=l-1:ifl<1then130
+ 2076 gosub500:au%=au%+1:ifau%=3then2100
+ 2077 goto2000
+ 2080 px%=px%+xanddx%:py%=py%+yanddy%:sysq,px%+1,py%+1,"{wht}"c$(pr):return
+ 2100 sysq,1,21,"{wht}willst du aufgeben?{yel}  nein  ja";:h=2:c%=21:b%=6:gosub700
+ 2101 e$="{f1}":ifa%=1then2000
+ 2102 return
+ 2200 rem sysq,0,20,"1h\n 2kob 3ork 4w\c 5fee":sysq,0,21,"6dkr 7tro/zom  8dra 9ful"
+ 2205 rem gete$:a%=val(e$):ifa%=.then2205
+ 2207 rem gosub570:ifa%=8thenk%(px%,py%)=13
+ 2220 rem ona%gosub4200,5200,5300,5400,5100,6200,5600,5700,5800:gosub200:return
+ 2300 rem sysq,0,20,"{gry3}1lz 2ae 3pw 4sa 5cf 6jg 7ts 8hg"
+ 2304 rem gete$:a%=val(e$):ifa%=.then2304
+ 2308 rem gosub570:w(12+a%,2)=1:i%=i%+1:return
+ 4000 gosub570:sysq,29,5,"{rvon}{gry3}D":sysq,28,6,"{rvon}{grn}{SHIFT-POUND} {lgrn}{CBM-*}"
+ 4010 sysq,28,7,"{rvon}{grn}{CBM--}{lgrn}  ":sysq,28,8,"{rvon}{lgrn}{CBM--}{wht}% ":sysq,28,9,"{rvon}{grn}{CBM--}{lgrn}  "
+ 4015 gosub9650:gosub570:i=int(rnd(1)*100)+1:sysq,1,21,"{wht}du findest ";
+ 4020 z=21:ifi>29thenz=22
+ 4024 ifi>49thenz=23
+ 4026 ifi>80thenz=24
+ 4027 ifi>90thenz=25
+ 4028 printw$(z);:sysq,1,22,"{wht}mitnehmen {gry3}oder  {wht}trinken";:h=2:b%=16:gosub700
+ 4032 ifa%=2thenprint" {wht}welch k[stlicher trank!";:l=l+w(z,0):pm=pm+w(z,1):ab%=1:ifz=24orz=25thenos%=os%+1
+ 4035 ifa%=1thenifi%>3thenprint" {wht}dein rucksack ist voll";:goto4040
+ 4036 ifa%=1thenifw(z,2)=1thenprint" {wht}das hast du schon";:goto4040
+ 4038 ifa%=1thenprint" {wht}du steckst die flasche ein";:w(z,2)=1:i%=i%+1
+ 4040 k%(px%,py%)=1:gosub750:gosub570:return
+ 4100 i=int(rnd(1)*5)+1+lv:g=g+i:a%=.:ifi<11thena%=1
+ 4103 sysq,29,6,"{brn}{CBM-P}{CBM-O}{CBM-I}{CBM-O}{CBM-P}{down}{left}{left}{left}{left}{left}{left} {brn}{rvon}{CBM-POUND}{CBM-POUND}{CBM-POUND}{CBM-POUND}{CBM-POUND}{rvof}{CBM-H}{down}{left}{left}{left}{left}{left}{left}{rvon}{orng}{SHIFT-*}{SHIFT-*}{gry1}Z{brn}{SHIFT-*}{SHIFT-*}{rvof}{CBM-H}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 4105 print"{yel}{CBM-POUND}Q{CBM-+}{CBM-POUND}{rvon}{orng}{SHIFT-*}{SHIFT-*}{brn}{SHIFT-*}{rvof}{CBM-H}":ifi<6then4120
+ 4110 sysq,28,7+a%,"{yel}{CBM-POUND}":sysq,26,8+a%,"{CBM-POUND}{CBM-+}Z{CBM-+}":ifa%=.thensysq,25,9,"Z{CBM-+}Q{rvon}{CBM-+}{CBM-POUND}{rvof}{CBM-+}{CBM-POUND}"
+ 4120 poke780,6:tw=60:gosub9270:gosub570
+ 4130 sysq,1,21,"{wht}du findest{yel}"i"gold";:gosub750:gosub570:k%(px%,py%)=1:return
+ 4200 gosub570:k$="{gry2}cami":pu=pu-5
+ 4201 ib=int(rnd(1)*2):ifib=1thenk$="{lgrn}wendor":ps=.5:goto4280
+ 4202 gosub9640:sysq,28,1,"{rvon}{gry2}{CBM-POUND}{CBM-POUND}{CBM-POUND}{CBM-POUND}{down}{left}{left}{left}{left}{left}{gry2}{CBM-+}{wht}{CBM-POUND}  {CBM-POUND}{gry2}{CBM-+}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 4203 print"{red}S{rvon}{gry2}{CBM-+}{CBM-+}{wht}W  W{gry2}{CBM-+}{CBM-+}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{gry2}{CBM-K}{CBM-+}{CBM-+}{wht}    {gry2}{CBM-+}{CBM-+}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 4204 print"{rvon}{gry2}{CBM-K}{rvof}{wht}{CBM-B} {rvon}{CBM-F}JK{CBM-D}{rvof} {rvon}{yel}{CBM-A}{CBM-S}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{gry2}{CBM-K}{rvof} {rvon}{wht}{CBM-F}{gry3}{CBM-POUND}  {CBM-POUND}{rvof} {rvon}{yel}{CBM-Z}{CBM-X}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 4205 print"{rvon}{gry2}{CBM-K}{rvof}  {rvon}sale{wht}{CBM-C}{rvof} {grn}T{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{grn}*{rght}{rght}{rvon}{gry3}    {rvof} {wht}{CBM-B}{pur}*{down}{left}{left}{left}{left}{left}{left}";
+ 4206 print"{wht}{CBM--} {CBM--}{down}{left}{left}{left}{left}{wht}{CBM-POUND}{CBM--} {CBM--}";
+ 4210 gosub9640:sysq,1,20,"{wht}weitergehen {gry3}oder {wht}bei "k$"{wht} einkaufen:"
+ 4211 ifw%>11thena(1)=20:goto4215
+ 4212 a(1)=w%+1
+ 4215 forx=1to3
+ 4216 ifx>1thenz=int(rnd(.)*7)+13:a(x)=z
+ 4217 ifx=2thenifw(z,2)=1then4216
+ 4218 ifx=3thenifz=a(2)orw(z,2)=1then4216
+ 4219 d=w(a(x),1)+lv+int(pm):ifib=1thend=int(d*ps)
+ 4220 sysq,1,20+x,w$(a(x)):sysq,22,20+x,"{yel}gold"d;:next:v=1:h=4:gosub700
+ 4230 a$="{gry3} zieht weiter":ifa%=1andh%=1thensysq,0,18,l$:a$="{gry3} schlie~t seinen laden"
+ 4231 ifa%=1andh%=2thensysq,0,18,l$:a$=":{cyn} nichts passendes dabei?"
+ 4232 ifa%=1thengosub570:sysq,1,21,k$a$;:goto4260
+ 4233 i=a%-1:k%=w(a(i),1)+lv+int(pm):ifib=1thenk%=int(k%*ps)
+ 4237 gosub570:ifi=1thenifw%<12then4241
+ 4238 ifi%>3thensysq,1,21,"{wht}mehr kannst du nicht tragen";:goto4260
+ 4241 ifk%>gthensysq,1,21,"{wht}du hast nicht genug gold";:goto4260
+ 4244 ifw(a(i),2)=1thensysq,1,21,"{lred}"w$(a(i))" {wht}schon vorhanden";:goto4260
+ 4250 ifi=1theng=g-k%:w%=a(1):ifa(1)=20thenw%=12:w(a(i),2)=1:i%=i%+1:he%=he%+1
+ 4251 ifi>1theng=g-k%:i%=i%+1:w(a(i),2)=1
+ 4256 sysq,1,21,"{wht}du kaufst "w$(a(i));:k%(px%,py%)=1:h%=0:gosub750:gosub570:return
+ 4260 gosub750:ifh%<1thenk%=3:gosub680
+ 4265 h%=h%-1:gosub570:return
+ 4280 gosub9640:sysq,28,1,"{yel}{CBM-D}{CBM-+}{CBM-+}{CBM-+}{grn}X{down}{left}{left}{left}{left}{left}{left}{left}{left}{red}S  {yel}{CBM-+}{CBM-+}{lred}{rvon} {yel}{rvof}{CBM-+}{CBM-+}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 4282 print"{red}H  {yel}{CBM-+}{lred}{rvon}{CBM-C},{CBM-V}{yel}{rvof}{CBM-+}{CBM--}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{lred}{rvon}{CBM-Q}{rvof}  {lred}{CBM-*}{rvon}JCK{rvof}{SHIFT-POUND}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 4284 print"{grn}H{wht}{rvon}{CBM-C}{lgrn}{rvof}{CBM-F}{CBM-D}{wht}{rvon}{CBM-V}{CBM--}{CBM-C}{lgrn}{rvof}{CBM-F}{down}{left}{left}{left}{left}{left}{left}{left}{left}{yel}H{wht}{CBM-C}{rvon}{CBM-F}s ' {CBM-F}{lgrn}{rvof}{CBM-F}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 4286 print"{blu}H{wht}  {rvon} al {CBM-V}{rvof}{CBM-V} {orng}{CBM-F}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{gry1}A{wht} {CBM-N}{rvon}EDDe{lred}{rvof}{CBM-V}{wht} {orng}{rvon}{CBM-F}{rvof}{CBM--}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 4288 print"{pur}{rvon}{CBM-POUND}{wht}{rvof}{CBM-T}{CBM-Y}{pur}{rvon}{CBM--}{wht}{rvof} {orng}{CBM-N}{rvon}{CBM-+}{CBM--}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvof}{brn}{CBM-POUND}{rvon}{CBM-+}{wht}{rvof}  {brn}{rvon}{CBM-+}{rvof}{CBM-POUND}{orng}{rvon}{CBM-K} {CBM--}{rvof}";:goto4210
+ 4400 sysq,1,20,k$"{gry3} greift dich an!"
+ 4402 sysq,1,21,"{red}k\mpfen   {wht}fliehen";
+ 4403 rem if jg=1then print"   {rvon}{grn}jg{rvof} geben";:b%=10:c%=4:h=3:gosub700:goto4406
+ 4404 ifhg=2thenprint"   {rvon}{yel}hg{rvof} werfen";:b%=10:h=3:gosub700:goto4407
+ 4405 b%=10:h=2:gosub700:return
+ 4406 rem if a%=3thenjg=2:a%=1:return
+ 4407 ifa%=3thenhg=3:a%=1:return
+ 4408 return
+ 4410 s=int(g/25+lv+rnd(1)*(2*g/25+lv)):rem s=int(rnd(1)*g/5)+int(rnd(.)*2*lv)
+ 4415 gosub9900:sysq,px%+1,py%+1," ":sysq,0,21,l$
+ 4416 sysq,1,21,"{wht}du fliehst!";:d=3:ifs>0thenprint" {red}leben -"abs(s)"{left}%";
+ 4418 ifg>50theng=g-int(g/100*(rnd(1)*11+10)):print:print"{wht} bei der flucht hast du {yel}gold {wht}verloren!";
+ 4419 iflv>4thenfg%=fg%+1
+ 4420 xf=int(rnd(1)*gx):yf=int(rnd(1)*gy):ifk%(xf,yf)<>1or(xf=px%andyf=py%)then4420
+ 4425 l=l-s:k%(px%,py%)=1:u=2:return
+ 4900 sysq,28,8,"{blu}M{lblu}MN{blu}N{down}{left}{left}{left}{left}N{lblu}NM{blu}M":gosub9630:gosub9660:k%(px%,py%)=1
+ 4905 sysq,1,21,"{wht}du bist vor der {red}falle {wht}gesch]tzt! {orng}{rvon}ts{rvof}";:gosub750:return
+ 5000 gosub570:gosub9670:sysq,28,7,"   {down}{left}{left}  {down}{left} ":i=int(rnd(1)*90)+10
+ 5001 ifts=1then4900
+ 5002 ifi>90theni=6:if(int(lv/2)<>lv/2)orlv=2theni=5:goto5009
+ 5003 ifi>78theni=5
+ 5004 ifi>60theni=4
+ 5005 ifi>30theni=3
+ 5006 ifi>20theni=2
+ 5007 ifi>9theni=1
+ 5008 rem ife$="."theni=6:rem fallgrube test
+ 5009 onigosub5020,5030,5040,5050,5060,5070
+ 5010 gosub750:gosub570:k%(px%,py%)=1:return
+ 5020 sysq,27,8,"{rvon}{red}{SHIFT-POUND}{rvof}{lred};{yel};{lred};{yel};{red}{rvon}{CBM-*}{down}{left}{left}{left}{left}{left}{left}{left}{red}{SHIFT-POUND}{rvof}{lred};{yel};{lred};{yel};{lred};{yel};{red}{rvon}{CBM-*}"
+ 5023 sysq,1,21,"{wht}du trittst auf gl]hende {red}lava {lred}-20%";:l=l-20:gosub9670:return
+ 5030 sysq,27,8,"{rvon}{grn}{SHIFT-POUND},;,;{CBM-*}{down}{left}{left}{left}{left}{left}{left}{left}{grn}{SHIFT-POUND};,;,;,{CBM-*}"
+ 5033 sysq,1,21,"{wht}du l\ufst tapfer durch {red}dornen {lred}-12%";:l=l-12:gosub9670:return
+ 5040 sysq,27,8,"{gry1}Q{gry2}{CBM-POUND}{gry1}{CBM-+}W{gry2}{CBM-POUND}{gry1}{CBM-POUND}":sysq,26,9,"{gry1}{CBM-POUND}{gry2}{CBM-+}{gry3}{CBM-+}{gry1}Q{gry2}{CBM-+}{gry3}Q{gry2}{CBM-+}{gry1}{CBM-POUND}"
+ 5043 sysq,1,21,"{wht}du stolperst ]ber l\stiges {red}ger[ll {lred}-8%";:l=l-8:gosub9670:return
+ 5050 sysq,26,1,"{gry3}B B   B{down}{down}{down}{down}{down}{down}{down}{down}{left}{left}{left}{left}{left}{left}{left}{gry2}W W W W"
+ 5053 sysq,1,21,"{wht}du aktivierst eine {red}pfeilfalle {lred}-15%";:l=l-15
+ 5054 foru=.to3:gosub9630:next:return
+ 5060 sysq,27,8,"{gry2}{CBM-A}{yel}>{lblu}V{cyn}V{yel}<{gry2}{CBM-S}{down}{left}{left}{left}{left}{left}{left}{left}{gry3}{CBM-A}{yel}>{lblu}V{cyn}V{lblu}V{cyn}V{yel}<{gry3}{CBM-S}"
+ 5065 foru=.to5:gosub9660:next:s=9:sysq,px%+1,py%+1," ":gosub4420
+ 5068 sysq,1,21,"{wht}du ber]hrst ein {red}teleportal {lred}-9%";:return
+ 5070 sysq,27,8,"{rvon}{gry2}{SHIFT-POUND}{gry1}{CBM--}   {gry2}{CBM-*}{down}{left}{left}{left}{left}{left}{left}{left}{SHIFT-POUND} {gry1}{CBM-+}{CBM-POUND}{CBM-POUND}{CBM-POUND}{gry2} {CBM-*}":u=1:l=l-10:ifvq=1thenl1=l1+1
+ 5073 sysq,1,21,"{wht}du st]rzt hinab zur ebene"lv+1" {lred}-10%";:gosub9670:return
+ 5100 gosub570:i=int(rnd(1)*10)+5+lv
+ 5101 ib=int(rnd(1)*2):b$="{yel}gute ":f$="{yel}":ifib=1thenb$="{pur}b[se ":f$="{pur}"
+ 5102 sysq,28,2,"{rvon}"f$"{SHIFT-POUND}{CBM-POUND}{CBM-*}":ifib=1thensysq,26,3,"{rvon}{wht}{SHIFT-POUND}{pur}{SHIFT-POUND}M N{CBM-*}{rvof}{blu} {lgrn}A":goto5104
+ 5103 sysq,26,3,"{rvon}{wht}{SHIFT-POUND}{yel}{SHIFT-POUND}{CBM-@} {CBM-@}{CBM-*}{rvof}{blu} {lgrn}A"
+ 5104 sysq,25,4,"{rvon}{wht}{SHIFT-POUND}{CBM-+}"f$" {lred}W W"f$" {wht}{CBM-*}{rvof}{grn}B":sysq,25,5,"{rvon}{wht}{CBM-+}{CBM-+}"f$" {lred}   {wht}{CBM-+}{CBM-+}{rvof}{grn}B"
+ 5105 sysq,25,6,"{rvon}{wht}{CBM-+}{lred} {wht}{CBM-+}{rvof}{lred}{CBM-*}{rvon}{CBM-Y}{rvof}{SHIFT-POUND}{rvon}{wht}{CBM-+}{CBM-+}{lred} {down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{wht}{CBM-+}{CBM-+}{rvof}{lred}{CBM-*}{rvon} , {CBM-P}{CBM-O}{rvof}{CBM-T}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5106 print"{rvon}{wht}{CBM-+}{CBM-+}{gry3}S S{wht}{CBM-+}{down}{left}{left}{left}{left}{left}{rvon}{gry3}{SHIFT-POUND}{$a0}{$a0}{$a0}{CBM-*}{down}{left}{left}{left}{left}{rvon}{lred}{CBM-K}{rvof} {CBM-K}";
+ 5107 gosub9610:ifcf=1andib=1then5150
+ 5108 ifcf=1theni=i+i:sysq,1,21,"{lred}{rvon}cf{rvof} {wht}hat die wunschkraft verdoppelt!";:gosub750
+ 5110 gosub570:o=int(i/10*100+.01):gosub26
+ 5120 b%=13:sysq,0,20,b$"fee:":ifib=1then5130
+ 5121 sysq,0,21,"{wht}welchen wunsch darf ich dir erf]llen?"
+ 5123 sysq,1,22,"{lred}+"i"leben":sysq,14,22,"{pur}+ "o$" pro.":sysq,27,22,"{yel}+"i"gold";:h=3:gosub700
+ 5125 ifa%=1thenl=l+i
+ 5126 ifa%=2thenpm=pm+(i/10):ifpm>3.5thenpm=3.5
+ 5127 ifa%=3theng=g+i
+ 5128 sysq,1,24,"{wht}die "b$"fee {wht}erf]llt deinen wunsch!";:goto5145
+ 5130 sysq,0,21,"{wht}suche dir einen fluch aus!"
+ 5132 sysq,1,22,"{lred}-"i"leben":sysq,14,22,"{pur}- "o$" pro.";:ifg-i<.thenh=2:goto5135
+ 5133 sysq,27,22,"{yel}-"i"gold";:h=3
+ 5135 gosub700:ifa%=1thenl=l-i
+ 5136 ifa%=2andpm-(i/10)<.thenprint" {wht}du hast zu wenig promille!";:gosub750:gosub570:goto5120
+ 5137 ifa%=2thenpm=pm-(i/10):ifpm<.thenpm=.
+ 5138 ifa%=3theng=g-i
+ 5142 sysq,1,24,"{wht}die "b$"fee {wht}verflucht dich! ";:ifl<.thenl=1
+ 5145 gosub750:gosub570:k%(px%,py%)=1:return
+ 5150 sysq,28,4,"{rvon}{lred}x x":sysq,1,21,w$(17)" {wht}klatscht sie weg!":i=int(rnd(.)*5)+1
+ 5152 sysq,1,22,"{pur}b[se fee {wht}hinterl\sst{yel}"i"gold";:g=g+i:fk%=fk%+1:goto5145
+ 5200 wk=int(rnd(1)*6)+1:wp=int(rnd(1)*6)+1:i=int(rnd(1)*4)+lv
+ 5201 sysq,28,1,"{lred}{CBM-B} {CBM-D}{rvon}{CBM-B}{down}{left}{left}{left}{left}{rvon}{gry2}{SHIFT-POUND}WW{CBM-*}{down}{left}{left}{left}{left}{left}";
+ 5202 print"{rvon}{lred}{CBM-B}{gry2}:  :{rvof}{lred}{CBM-B}{down}{left}{left}{left}{left}{left}{left}{rvof}{grn}{CBM-@}{gry2}{CBM-*}{rvon}JK{rvof}{SHIFT-POUND}{grn}{CBM-@}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5203 print"{rvon}{gry2}{CBM-C}{grn}{SHIFT-POUND}{lred}1{grn} {CBM-E}{CBM-E} {yel}1{grn}{CBM-*}{gry2}{CBM-V}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{grn}{CBM-F}CC{CBM-POUND}{yel}{CBM-POUND}{CBM-POUND}{grn}{CBM-POUND}CC{CBM-D}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}";
+ 5204 print"{rvon}{red}{CBM-A}{CBM-E}{CBM-E}{CBM-S}{rvof}{down}{left}{left}{left}{left}{rvon}{red}{SHIFT--}{CBM-D}{CBM-F}{SHIFT--}{rvof}{down}{left}{left}{left}{left}{left}";
+ 5205 print"{CBM-@}{rvon}{yel}{CBM-POUND}{rvof}  {rvon}{CBM-POUND}{rvof}{red}{CBM-@}{down}{left}{left}{left}{left}{left}{left}{rvon}{lgrn}{CBM-I}{CBM-I}{rvof}  {rvon}{CBM-I}{CBM-I}{rvof}";:gosub9650
+ 5206 gosub570:sysq,1,20,"{gry2}kobold:{gry3} lass uns w]rfeln!"
+ 5207 sysq,1,21,"{cyn}einsatz:  {grn}alles   {yel}"i"gold";:sysq,29,21,"{red}nichts";
+ 5208 b%=9:c%=10:h=3:gosub700
+ 5210 if(a%=1andg<1)or(a%=2andg<i)thensysq,1,22,"{wht}nicht genug gold!":goto5250
+ 5212 ifa%=3thensysq,0,21,l$:goto5249
+ 5214 ifa%=1thenu$=" {grn}alles":zo%=zo%+1
+ 5216 ifa%=2thenu$="{yel}"+str$(i)+" gold"
+ 5220 sysq,10,21,u$left$(l$,29-len(u$))
+ 5221 forx=.to9:e$=right$(str$(int(rnd(1)*6)+1),1)
+ 5222 sysq,27,5,"{lred}{rvon}"e$"{rght}{rght}{rght}{rght}{yel}{rvon}"e$:tw=x*x/9:gosub20:gosub9670:next
+ 5224 sysq,27,5,"{lred}{rvon}"right$(str$(wk),1)"{rght}{rght}{rght}{rght}{yel}{rvon}"right$(str$(wp),1)
+ 5226 sysq,1,22,"{orng}wurfergebnis: {gry2}kobold{lred}"wk" {wht}du{yel}"wp
+ 5230 a$="{grn}du gewinnst{yel}":b$="{red}du verlierst{yel}":c$="{wht}unentschieden"
+ 5231 ifa%=2goto5240
+ 5232 ifwk<wpthensysq,1,23,a$g"gold";:g=g+g:goto5255
+ 5234 ifwk>wpthensysq,1,23,b$g"gold";:g=0:goto5252
+ 5236 ifwk=wpthensysq,1,23,c$;:goto5252
+ 5240 ifwk<wpthensysq,1,23,a$i"gold";:g=g+i:goto5252
+ 5242 ifwk>wpthensysq,1,23,b$i"gold";:g=g-i:goto5252
+ 5244 ifwk=wpthensysq,1,23,c$;:goto5252
+ 5249 sysq,1,22,"{wht}du spielst nicht."
+ 5250 sysq,1,23,"{gry2}kobold {wht}haut zu! {lred}leben -"i"{left}%";:l=l-i:gosub9670
+ 5252 gosub750:k%(px%,py%)=1:gosub570:a$="":return
+ 5255 poke780,6:tw=60:gosub9270:if(rnd(1)*100)>1ori%=4then5252
+ 5258 sysq,1,24,"{yel}jackpot! "a$" "w$(20);:w(20,2)=1:i%=i%+1:d=5:goto5252
+ 5300 k$="{lred}ork":ib=int(rnd(1)*8):kw=23+n%:k%=9:bb%=rnd(1)*6+1:ifvo%=1then5400:rem ib=4+5 champ 6 hero 7 alke
+ 5301 ifvq=1thenkw=kw+9:bb%=bb%+3:goto5305
+ 5302 if(ib>3andlv>2)thenk$="{lred}orkchamp":kw=kw+6:bb%=bb%+2
+ 5303 if(ib>5andlv>3)thenk$="{lred}orkheld":kw=kw+15:bb%=bb%+5
+ 5304 if(ib>6andlv>4)thenk$="{lred}orkboss":kw=kw+20:bb%=bb%+5
+ 5305 sysq,24,1,"{rvon}{gry3}{SHIFT-POUND}{CBM-*}{rvof} {grn} {rvon}{SHIFT-POUND}{CBM-POUND}{CBM-POUND}{CBM-*}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5306 print"{rvon}{gry3}{CBM-J}{CBM-L}{rvof} {lgrn}{CBM-*}{grn}{CBM-+}{lgrn}W{rvon}{grn}{CBM--}{rvof}{lgrn}W{SHIFT-POUND}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{gry3}{CBM-J}{CBM-L}{rvof}  {grn}{CBM-J}{rvof}{wht}{CBM-D}{rvon}{grn}R{rvof}{wht}{CBM-F}{grn}{CBM-K}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5307 print"{rvon}{gry3}{CBM-J}{CBM-L}{grn}{SHIFT-POUND} {orng}{SHIFT-+}{grn}CCC{orng}{SHIFT-+}{grn} {CBM-*}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{gry3}{CBM-J}{CBM-L}{grn}{$a0}{$a0}{$a0} {gry3}{CBM-POUND}{CBM-POUND}{CBM-POUND}{gry2}{CBM-POUND}{grn} {rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5308 print"{rvon}{gry1}{CBM-F}{CBM-D}{grn}{CBM-B}  {CBM-N}{rvof}{gry3}{CBM-+}{CBM-+}{CBM-+}{gry2}{CBM-+}{rvon}{grn}{CBM-G}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{grn}{CBM-C}{CBM-B}{rvof}{SHIFT-POUND}{rvon}{blk} {orng}{CBM-POUND}{CBM-POUND}{gry2}{CBM-+}{gry3}{CBM-+}{gry2}{CBM-+}{CBM-+}{rvof}{grn}{SHIFT-POUND}{down}{left}{left}{left}{left}{left}{left}{left}";
+ 5309 print"{rvon}{grn}{CBM--}{orng}{SHIFT-+}{SHIFT-+}{rvof}{gry2}{CBM-+}{CBM-+}{down}{left}{left}{left}{left}{left}{rvon}{grn}{CBM--}{rvof}  {rvon}{grn} {rvof}{down}{left}{left}{left}{left}{left}{rvon}{grn}{SHIFT-POUND} {blk}  {grn} {CBM-*}{rvof}";
+ 5310 ifk$="{lred}orkchamp"thensysq,28,1,"{gry3}{rvon}{SHIFT-POUND}{CBM-POUND}{CBM-POUND}{CBM-*}{down}{down}{down}{left}{left}{left}{left}{left}{left}{yel}{SHIFT-POUND} {orng}champ{yel} {CBM-*}{rvof}";
+ 5311 ifk$="{lred}orkheld"thensysq,28,1,"{red}{rvon}{SHIFT-POUND}{CBM-POUND}{CBM-POUND}{CBM-*}{down}{down}{down}{left}{left}{left}{left}{left}{left}{red}{SHIFT-POUND} {orng}held{red}  {CBM-*}{rvof}";
+ 5312 ifk$="{lred}orkboss"thensysq,28,1,"{pur}{rvon}{SHIFT-POUND}{CBM-POUND}{CBM-POUND}{CBM-*}{down}{down}{down}{left}{left}{left}{left}{left}{left}{pur}{SHIFT-POUND} alke1 {CBM-*}{rvof}";
+ 5314 poke780,4:tw=60:gosub9270:gosub570
+ 5320 gosub4400:ifa%=1thengosub1600:gosub8570:goto5330
+ 5325 gosub8580:gosub4410:gosub750:gosub680
+ 5330 gosub9670:gosub9630:h=1:gosub570:return
+ 5400 k$="{lred}w\chter":kw=n%+10:k%=10:bb%=rnd(1)*3+1
+ 5401 sysq,25,1,"{rvon}{gry3}{SHIFT-POUND}{rvof}  {gry2}{rvon}{SHIFT-POUND}{CBM-POUND}{CBM-POUND}{CBM-*}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{gry3}{rvon}G{rvof} {lgrn}{CBM-*}{gry2}{CBM-+}{red}W{rvon}{gry2}{CBM--}{rvof}{red}W{lgrn}{SHIFT-POUND}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5402 print"{rvon}{gry1}{CBM-J}{rvof} {gry2}{CBM-M}{rvon}{CBM--}{rvof}{wht}{CBM-D}{rvon}{gry2}R{rvof}{wht}{CBM-F}{gry2}{CBM-H}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{gry1}{CBM-J}{gry2}{SHIFT-POUND} {orng}V{grn}{CBM-POUND}{CBM-POUND}{CBM-+}{orng}V{gry2} {CBM-*}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5403 print"{rvon}{gry1}{CBM-J}{gry2}    {gry3}{CBM-POUND}{CBM-POUND}{CBM-POUND}{CBM-POUND}{grn} {rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{grn}R{CBM-B}{$a0}{$a0}{$a0}{gry3}stop{grn}{CBM-G}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5404 print"{rvon}{grn}C{rvof}{SHIFT-POUND}{orng}{CBM-L}{rvon}{CBM-POUND}{CBM-POUND}{gry3}{CBM-+}{CBM-+}{CBM-+}{CBM--}{rvof}{grn}{SHIFT-POUND}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{gry1}{CBM-J}{rvof} {orng}{CBM-M}{rvon}{SHIFT-+}{SHIFT-+}{gry3}{rvof}{CBM-*}{rvon}  {rvof}{SHIFT-POUND}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5405 print"{rvon}{gry1}{CBM-K}{rvof} {orng}{CBM-N}{gry2}{rvon}{CBM--}{blk} {orng}{SHIFT-+}{gry2}{CBM--}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{gry1}{CBM-C} {rvon}{gry2}{SHIFT-POUND} {rvof}  {rvon}{CBM--}{CBM-*}{rvof}";:gosub9670
+ 5410 gosub570:sysq,1,20,k$"{wht} steht im weg..."
+ 5411 sysq,1,21,"{red}k\mpfen  {yel}orkbier trinken";:b%=9:h=2:gosub700
+ 5416 ifa%=1thengosub1600:gosub750:gosub8570:goto5428
+ 5425 l=l+5:pm=pm+1:os%=os%+1:ab%=1:sysq,1,22,k$"{wht} schl\ft ein":sysq,29,2,"{grn}{CBM-O}{rght}{CBM-O}";
+ 5427 sysq,1,23,"du erh\ltst{yel} 5% leben{wht} und {pur}1.00 promille";:gosub750:gosub8580
+ 5428 gosub570:k%(px%,py%)=1:return
+ 5500 k$="{yel}wichtel":k%=11:w=g:bb%=rnd(1)*10+1
+ 5501 sysq,29,2,"{grn}{CBM-@}{CBM-O}{CBM-P}{CBM-@}{down}{left}{left}{left}{left}{left}{rvon}{SHIFT-POUND}{CBM-@}{CBM-POUND}{CBM-@}{CBM-POUND}{CBM-*}{down}{left}{left}{left}{left}{left}{left}{rvon}{CBM-F}{lred}W W{grn}{CBM-L}{CBM--}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}";
+ 5504 print"{lred} J{rvon} K {rvof}K{orng}Q{down}{left}{left}{left}{left}{left}{left}{left}{brn}{CBM-B}{gry1}{CBM-V}{lred}{CBM-*}{rvon}E{rvof}{SHIFT-POUND} {down}{left}{left}{left}{left}{left}{left}{lred}{rvon}{CBM-Q}{gry3}{CBM-@}:{lred} {gry3}:{CBM-*}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}";
+ 5507 print"{brn}{CBM-N}{rvon} {gry1}{rvof}{CBM-J}{gry3}{rvon}{CBM-C}*{CBM-V}{CBM-H}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{brn}{CBM-L}{rvon}{CBM-POUND}{gry1}{rvof}{CBM--}{orng}{rvon}{CBM-G}{CBM-@}{CBM-M}{lred}{SHIFT-@}{down}{left}{left}{left}{left}{left}";
+ 5509 print"{rvof}{gry1}{CBM-D}{brn}{rvon}{CBM-V}{SHIFT--}{CBM-C}{gry1}{rvof}{CBM-F}";:pokeco+233,int(rnd(.)*15)+1:gosub9680
+ 5510 gosub570:sysq,1,20,k$"{wht}: tausche {yel}gold {wht}gegen {lred}leben":w1%=100-l:ifw1%>gthenw1%=g
+ 5511 w2%=w1%/2:ifl=100thenw1%=g/2
+ 5513 sysq,0,21,"{grn}"w2%"gold":sysq,10,21,"{lgrn}"w1%"gold":sysq,21,21,"{red}kampf";:b%=10:h=3:gosub700:ifa%=1thenw1%=w2%
+ 5514 ifa%=3thengosub5540:kw=20+n%:gosub1600:k%(px%,py%)=1:gosub570:return
+ 5516 ifl<100andw1%>.thenl=l+w1%:sysq,0,22,"{yel}"w1%"gold {wht}eingetauscht";:goto5520
+ 5517 gosub680:ifw1%>.thensysq,1,22,"{wht}du schenkst dem wichtel{yel}"w1%"gold";:goto5520
+ 5518 sysq,1,22,"{wht}der wichtel entschwindet";
+ 5520 g=g-w1%:gosub750
+ 5530 k%(px%,py%)=1:gosub570:return
+ 5540 sysq,27,3,"{gry2}{rvon}{SHIFT-POUND}{grn}{SHIFT-POUND}M{CBM-POUND}N{down}{left}{left}{left}{left}{left}{gry2}H{down}{left}{SHIFT--}{down}{left}G{rvof} {lred}{CBM-*}{CBM-I}{down}{down}{left}{left}{left}{left}{left}{brn} {CBM-C} {down}{left}{left}{left}   "
+ 5542 u$="{wht}du greifst an":return
+ 5600 k$="{lred}troll":kw=35+n%:k%=12:bb%=rnd(1)*10+11:c$=chr$(34)
+ 5601 iflv=5thenk$="{lred}zombie":kw=37+n%:k%=12:bb%=rnd(1)*5+1:goto5620
+ 5602 iflv>5thenib=int(rnd(1)*3):ifib>1thenk$="{lred}zombie":kw=40+n%:bb%=rnd(1)*5+5:goto5620
+ 5605 sysq,24,1,"{gry2} {CBM-F} {lgrn}{CBM-@}{rvon}{SHIFT-POUND}{CBM-@} {CBM-*}{rvof}{CBM-@}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5606 print"{grn}{CBM-D}{gry2}{rvon}{CBM-N}{rvof} {grn}{CBM-*}{rvon}{CBM--}{lgrn}W W{grn}{rvof}{SHIFT-POUND}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{grn}{CBM-L}{rvon}{CBM--}{CBM-*}{red}{rvof}{CBM-@}{grn}{rvon}{CBM--}F{lgrn}{CBM-G}{grn}I{rvof}{CBM-G}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5608 print"{gry2}{CBM-M}{rvon}{CBM-M}{grn} {orng} {grn}{rvof}{CBM-*}{rvon} {lgrn}L{grn}{rvof}{SHIFT-POUND}{orng}{rvon} {CBM-*}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{gry2}{CBM-L}{rvon} {orng}{rvof}{CBM-*}{rvon}{CBM-POUND}{CBM-@}{CBM-T}{CBM-Y} {CBM-POUND} {red}{rvof}{CBM-G}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5610 print"{gry2}{rvon}{CBM-J}{CBM-C}{rvof}{CBM-H}{gry1}{rvon}{CBM-+}:{CBM-T}V{CBM-T}:{grn}{CBM-G}{gry2}{rvof}{CBM-G}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{CBM-H}{CBM-B}{rvof}{CBM-J}{gry1}{rvon}{CBM-@}:{CBM-@}V{CBM-@}:{grn} {rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5612 print"{gry2}{rvon} {rvof}{CBM-B}{rvon}{CBM-L}{brn} {CBM-T}{CBM-T}{CBM-Y}{CBM-T}{CBM-T}{rvof}{SHIFT-POUND}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{gry2}{rvon}{CBM-D} {rvof}{CBM-J}{brn}{rvon}{CBM-F}{CBM--}{CBM-D}{CBM-F}{CBM-POUND}{CBM-D}{orng}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5614 print"{gry2}{rvon}{CBM-F}{CBM-B}{grn}{rvof}{CBM-D}{rvon}{CBM-U}{CBM-POUND}{rvof}{CBM-J}{CBM-L}{rvon}{CBM--}{CBM-Y}{rvof}{CBM-V}";:gosub9670
+ 5615 goto5630
+ 5620 sysq,28,1,"{grn}{CBM-D}{rvon}-'{red}I{rvof}{CBM-F}{down}{left}{left}{left}{left}{left}{grn}{rvon}{CBM-J}{red}W{grn},{red}Q{rvof}{CBM--}{down}{left}{left}{left}{left}{left}{grn}{CBM-L}";:print"{rvon}"c$"{CBM-P}"c$"{rvof}{CBM-H}"
+ 5623 sysq,28,4,"{gry2} {grn}{CBM-B}{rvon}{CBM-U}{CBM-B}{gry2}{rvof}{down}{left}{left}{left}{left}{brn}{rvon}{SHIFT-POUND}{CBM-F}{CBM-Y}{CBM-T}{CBM-*}{down}{left}{left}{left}{left}{left}{CBM--}O P{CBM-M}{down}{left}{left}{left}{left}{left}{CBM-G}{gry1}OE{CBM-T}{red}{rvof}{CBM-U}"
+ 5627 sysq,28,8,"{grn}{rvon}{CBM-POUND}{gry1}{CBM--}{CBM-POUND}{CBM--}{rvof}{CBM-G}{down}{left}{left}{left}{left}{gry1}{rvon}{CBM--}{rvof}O{rvon}{CBM--}{lblu}{rvof}{down}{left}{left}{left}{left}{gry3}{CBM-D}{grn}{rvon}{CBM-POUND}{lblu}{rvof} {grn}{rvon}{CBM--}{rvof}{CBM-F}":gosub9670
+ 5630 gosub570:gosub4400:ifa%=1thengosub1600:goto5640
+ 5635 gosub4410:gosub750:gosub680
+ 5640 gosub570:return
+ 5700 bb%=rnd(.)*3+8:k%=13:kw=int((d%+3)*5+25):bb%=bb%+(d%+5)*2:c$=chr$(34)
+ 5702 f$=mid$("{grn}{orng}{red}{blu}{gry2}{gry3}{yel}",d%+1,1):e$=mid$("{lgrn}{brn}{orng}{lblu}{gry3}{wht}{wht}",d%+1,1):k$=f$+"drache"
+ 5704 sysq,24,1,"{rvon}"e$" {rvof}"f$"{CBM-B} {rvon}{yel}{CBM-*}{rvof}    {rvon}{yel}{SHIFT-POUND}{rvof} {rvon}"f$"{CBM-B}"e$" "
+ 5706 sysq,24,2,"{rvon}  {rvof}"f$"{CBM-B}{rvon}{CBM--}{CBM-POUND}{rvof}{CBM-POUND}{CBM-POUND}{rvon}{CBM-POUND}{CBM--}{CBM-B}"e$"  "
+ 5708 sysq,24,3,"{rvon}"e$" {rvof}"f$"{CBM-B}{rvon}{CBM-B}U{rvof}"e$"{CBM-*}{rvon}"f$"::{rvof}"e$"{SHIFT-POUND}{rvon}"f$"I{rvof}{CBM-B}{rvon}{CBM-B}"e$" "
+ 5710 sysq,24,4,f$"{CBM-B}{rvon}"e$"  "f$":{rvof}{pur}Q"e$"{rvon}{CBM-+}{CBM-+}{rvof}{pur}Q{rvon}"f$":"e$"  "f$"{CBM-B}"
+ 5712 sysq,24,5,"{rvon}"e$"  {rvof}"f$"{CBM-B}{rvon}J{CBM-+}{rvon})({rvof}"f$"{CBM-+}{rvon}K{CBM-B}"e$"  "
+ 5714 sysq,24,6,"{rvon}"e$" {rvof}"f$"{CBM-B}{rvon}"e$" {rvof}"f$"{CBM-*}{rvon}J{rvof}{wht}"c$c$"{rvon}"f$"K{rvof}{SHIFT-POUND}{rvon}"e$" "f$"{CBM-B}"e$" "
+ 5716 sysq,24,7,f$"{CBM-B}{rvon}"e$"  {rvof}{CBM-B}"f$"{rvon}{CBM--}{rvof}{lred}{CBM-POUND}{CBM-POUND}{rvon}"f$"."e$"{CBM-B}  "f$"{CBM-B}"
+ 5718 sysq,25,8,f$"{CBM-B}"e$"{CBM-B}{rvon}"f$"{SHIFT-POUND}{CBM-+}{CBM-POUND}{CBM-POUND}{rvof}{CBM-+}{rvon}{CBM-*}"e$"{CBM-B}"f$"{CBM-B}"
+ 5720 sysq,26,9,e$"{CBM-*}{rvon}"f$"{CBM--}{CBM-+}{yel}::"f$"{rvof}{CBM-+}{rvon}:"e$"{rvof}{SHIFT-POUND}"
+ 5722 sysq,26,10,"{rvon}{wht}{CBM-V}"f$" {wht}{CBM-V}"f$".{CBM-POUND}{wht}{CBM-C}"f$" {wht}{CBM-C}":gosub9620:gosub9620
+ 5724 gosub570:gosub4400:ifa%=1thengosub1600:goto5730
+ 5725 gosub4410:gosub750:gosub680
+ 5730 gosub570:return
+ 5800 k$="{lred}fulgore":k%=14:kw=100-d%*10:ifkw<30thenkw=30
+ 5801 bb%=rnd(1)*100+d%
+ 5802 sysq,24,1,"{yel}* {grn} {rvon}{SHIFT-POUND}M{CBM-POUND}N{rvof}{CBM-F}{gry1}{CBM-D}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{yel}B {orng}{CBM-*}{grn}{CBM-+}{lgrn}W{rvon}{grn}{CBM-+}{rvof}{lgrn}W{orng}{SHIFT-POUND} {rvon}{brn} {grn}{CBM-C}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5804 print"{yel}VC*{rvon}{grn}{CBM-J}{rvof}{wht}{CBM-D}{rvon}{grn}{CBM-POUND}{rvof}{wht}{CBM-F}{grn}{CBM-G} {rvon}{CBM-J}{gry3}M{CBM-*}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5805 print"{yel}B {rvon}{orng}{SHIFT-POUND}{rvof}{rvon}{CBM-+}{grn}{CBM--} {rvof}{orng}{CBM-+}{rvon}{orng}{CBM-*}{grn}{SHIFT-POUND}{rvof}{SHIFT-POUND}{gry3}{CBM-*}{rvon}M{CBM-*}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5806 print"{yel}* {rvon}{grn} {orng}{SHIFT-+}{CBM-R}{CBM-R}{SHIFT-+}{grn} {rvof}{SHIFT-POUND}  {gry3}{CBM-*}{rvon} {rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5807 print"{rvon}{brn} {rvof}{grn}{rvon}{SHIFT-POUND}{rvof}{SHIFT-POUND}{gry2}{rvon}V{gry3}VV{gry2}V{rvof}{gry1}{CBM-V} {rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5808 print"{rvon}{grn}{CBM-Q}{rvof}{SHIFT-POUND}{gry2}{rvon}{SHIFT-POUND}{gry3}{CBM-+}{orng}{SHIFT--}{SHIFT--}{gry3}{CBM-+}{gry2}{CBM-*}{rvof}{down}{left}{left}{left}{left}{left}{left}{left}{left}{rvon}{brn}{CBM-K}{rvof}{CBM-J}{gry1}{CBM-+}{rvon}{grn}{CBM-H}{orng}{CBM-POUND}{CBM-POUND}{grn}{CBM-M}{rvof}{gry1}{CBM--}{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 5810 print"{brn}{CBM-L}{CBM-J} {rvon}{grn}{CBM--}{rvof}  {rvon}{CBM--}{down}{left}{left}{left}{left}{left}{left}{rvon}{brn}{CBM-L}{rvof}{rvon}{grn}{SHIFT-POUND}{CBM-POUND}{rvof}  {rvon}{CBM-POUND}{CBM-*}{rvof}";
+ 5811 iffb>.thensysq,34,4,left$("{red}{CBM-*}{down}{CBM-*}",fb+fb)
+ 5812 gosub9620
+ 5820 gosub570:gosub4400:ifa%=1thengosub1600:gosub570:u=3:return
+ 5825 gosub4410:sysq,1,23,k$"{wht} geht zur {orng}ebene"lv+1;:gosub750:gosub200:return
+ 5880 gosub200:gosub570:ifs%=1then5900
+ 5881 ifl<1thensysq,2,21,"{wht}fulgore hat dich niedergestreckt{gry3}...":v=3:gosub750:goto5950
+ 5882 u=.:goto110
+ 5900 poke780,1:gosub9200:print"{clr}      {grn}quest erfolgreich beendet!":print"{wht} du hast fulgore";
+ 5901 ifd%>.thenprint" und"d%"seiner drachen"
+ 5902 print" besiegt!";:ifd%=.thenprint
+ 5903 print" sledgie ist frei und st]rzt"
+ 5904 print" sich in sein n\chstes abenteuer...{down}"
+ 5907 print" {gry1}{CBM-+}{CBM-POUND}{CBM-POUND}{CBM-+}{CBM-POUND}                                 {CBM-+}";
+ 5908 print"  {gry1}{CBM-+}{CBM-+}{CBM-+}{gry2}{CBM-+}    {gry1}{CBM-+}{gry2}{CBM-+}{CBM-POUND}       {gry1}{CBM-POUND}{CBM-+}{CBM-+}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{CBM-+}{CBM-+}";
+ 5909 print"  {gry1}{CBM-+}{CBM-+}{gry2}{CBM-+}{CBM--}{$a0}{$a0}{$a0}{gry1}{CBM-+}{CBM-+}{gry2}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{gry1}{CBM-POUND}{CBM-POUND}{$a0}{$a0}{$a0}{CBM-+}{CBM-+}{gry2}{CBM-+}{$a0}{$a0}{$a0}{red}{rvon}{SHIFT-POUND} {rvof}{CBM-V}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{gry1}{CBM-+}{gry2}{CBM-+}{CBM-+}";
+ 5910 print"{$a0}{$a0}{$a0}{gry1}{CBM-+}{gry2}{CBM--}    {gry1}{CBM-+}{CBM-+}{CBM-+}{gry2}{CBM-+}{CBM-+}{gry1}{CBM-+}{CBM-+}{$a0}{$a0}{$a0}{CBM-+}{CBM-+}{gry2}{CBM-+}{CBM--}{red}  {rvon}{CBM-V}  {CBM-C}{rvof}       {gry1}{CBM-+}{gry2}{CBM-+}{CBM-+}{gry3}{CBM-+}";
+ 5911 print"{$a0}{$a0}{$a0}{gry1}{CBM-+}      {gry1}{CBM-+}{CBM-+}{gry2}{CBM-+}{CBM-+}{gry1}{CBM-+}    {CBM-+}{CBM-+}{gry2}{CBM-+}  {red}{rvon}{CBM-K}   M{CBM-C}{rvof}      {gry2}{CBM-+}{CBM-+}{gry3}{CBM-+}{wht}{CBM-+}";
+ 5912 print"          {gry1}{CBM-+}{CBM-+}{gry2}{CBM-+}{gry1}{CBM-+}{CBM--}     {CBM-+}{gry2}{CBM--}  {red}{rvon} {CBM-POUND}{CBM-@}{CBM-@}{CBM-POUND} {rvof} {lred}{CBM-F}    {gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{wht}{rvon} {rvof}";
+ 5913 print"           {gry1}{CBM-+}{CBM-+}{CBM-+}      {CBM-+}{CBM--}  {red}{rvon}{CBM-G}{lred}Q  Q{red}{CBM-M}{rvof} {lred}{rvon}{CBM-@}{rvof}{$a0}{$a0}{$a0}{gry1}{CBM-+}{gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{wht}{rvon} {rvof}";
+ 5914 print"  {gry1}{rvon} {gry2}{CBM-*}{rvof}        {gry1}{CBM-+}        {CBM--}  {wht}{rvon}{CBM-K}{lred} K  {wht}{CBM-L}{red}{rvof} {blu}{rvon} {rvof}{$a0}{$a0}{$a0}{gry1}{CBM-+}{gry3}{CBM-+}{CBM-+}{CBM-+}{wht}{rvon} {rvof}";
+ 5915 print"  {orng}{CBM-*}{gry1}{rvon} {gry2}{CBM-*}{rvof}                {gry1}{CBM--}  {wht}{rvon}{CBM-POUND}{lred} {red}{rvof}{CBM-D}{CBM-F}{lred}{rvon}{CBM-V}{wht}{CBM--}{blu}{SHIFT-POUND}{CBM-M}{rvof}{$a0}{$a0}{$a0}{gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{CBM-+}{wht}{rvon} {rvof}";
+ 5916 print"   {orng}{CBM-*}{brn}{rvon}  {rvof}{SHIFT-POUND}{wht}               {red} {blu}{CBM-I}{wht}{CBM-*}{rvon}{CBM--}{lred}  {wht}{CBM--}{rvof}{SHIFT-POUND}{blu}{rvon}{CBM--}{CBM-L}{red}{rvof}{$a0}{$a0}{$a0}{gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{CBM-+}{wht}{rvon} {rvof}";
+ 5917 print"    {brn}{rvon} {gry3}M{CBM-*}{wht}{rvof}               {blu}{rvon}{CBM-V} {CBM-H}{wht}{rvof}{CBM-*}{rvon}{CBM--}{CBM-+}{rvof}{SHIFT-POUND}{blu}{rvon}{CBM-N}{rvof}{SHIFT-POUND}    {gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{wht}{CBM-+}{rvon} {rvof}";
+ 5918 print"    {brn}{SHIFT-POUND}{gry3}{CBM-*}{rvon}M{CBM-*}{rvof}     {brn}{CBM-P}{CBM-O}{CBM-I}{CBM-I}{CBM-I}{CBM-O}{CBM-P}  {blu}{rvon} {CBM-B}M{rvof}{CBM-+}{wht}{CBM-*}{SHIFT-POUND}{blu}{rvon}{CBM-+}N{rvof}{CBM-H}{$a0}{$a0}{$a0}{gry1}{CBM-+}{gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{wht}{rvon}  {rvof}";
+ 5919 print"      {gry3}{CBM-*}{rvon}M{CBM-*}{yel}{rvof}:   {brn}{rvon}{CBM-POUND}{CBM-POUND}{CBM-POUND}{CBM-POUND}{CBM-POUND}{CBM-POUND}{CBM-POUND}{rvof}{CBM-H} {blu}{CBM-*}{rvon} {lred} {blu}M{rvof}{CBM-+}{CBM-+}{rvon}N{CBM-N}{rvof}    {gry1}{CBM-+}{gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{wht}{rvon}  {rvof}";
+ 5920 print" {orng}{rvon}{CBM-U}{rvof}   {yel}: {gry3}{CBM-*}{yel}{CBM-+}{gry3}{rvon}{CBM-*}{wht}{rvof} : {orng}{rvon}{SHIFT-*}{brn}{SHIFT-*}{orng}{SHIFT-*}{gry1}Z{orng}{SHIFT-*}{brn}{SHIFT-*}{SHIFT-*}{rvof}{CBM-H}{$a0}{$a0}{$a0}{orng}{CBM-L}{rvon}{CBM-T}{yel}O{orng}{CBM-Y}{CBM-T}{rvof}{CBM-K}    {gry1}{CBM-+}{gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{wht}{rvon}  {rvof}";
+ 5922 print"{grn}{CBM-D}{rvon} {lgrn}{rvof}{CBM-F}  {yel}{CBM-POUND}Q{CBM-+}{CBM-+}{rvon}{CBM-POUND}{rvof}{CBM-+}Z{CBM-POUND}{orng}{rvon}{SHIFT-*}{SHIFT-*}{brn}{SHIFT-*}{orng}{SHIFT-*}{brn}{SHIFT-*}{SHIFT-*}{SHIFT-*}{rvof}{CBM-H}  {gry1}{CBM-POUND}{brn}{CBM-N}{rvon},{CBM-D}{CBM-F}{CBM-+}{rvof}{CBM-J}    {gry1}{CBM-+}{gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{wht}{rvon}  ";
+ 5923 print"{grn}{rvon}{CBM-J}{gry2}%{lgrn}{CBM-L}{yel}{rvof}{CBM-POUND}ZQ{CBM-+}{rvon}{CBM-POUND}{rvof}Z{CBM-+}Q{CBM-+}{rvon}{CBM-POUND}{rvof}Q{CBM-POUND}{brn}{rvon}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{rvof}{CBM-H}{gry1}{CBM-POUND}{CBM-POUND} {brn}{CBM-L}{rvon}{CBM-@}{rvof}{CBM-G}{CBM-M}{rvon}{CBM-@}{rvof}{CBM-K} {gry1}{CBM-POUND} {gry1}{CBM-+}{gry2}{CBM-+}{CBM-+}{gry3}{CBM-+}{CBM-+}{wht}{rvon}  ";
+ 5924 print"{grn}{rvon}{CBM-J}{lgrn}{rvof}{CBM-+}{rvon}{CBM-L}{yel}{rvof}{CBM-T}{CBM-Y}{CBM-Y}{CBM-U}{rvon}{CBM-I}{CBM-I}{CBM-I}{CBM-I}{rvof}{CBM-U}{CBM-Y}{CBM-Y}{CBM-T}{gry1}{CBM-POUND}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{red}{rvon}{CBM-V}{CBM-POUND}{rvof}  {red}{rvon}{CBM-POUND}{CBM-C}{blu}{rvof}  {gry1}{CBM-POUND}{CBM-+}{gry2}{CBM-+}{gry3}{CBM-+}{CBM-+}{CBM-+}{wht}{rvon}  {rvof}";
+ 5925 print"{gry1}{CBM-POUND}{lgrn}{CBM-T}{$a0}{$a0}{$a0}   {gry1}{CBM-POUND}   {CBM-POUND}{CBM-POUND}    {CBM-POUND}{CBM-POUND}  {$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{CBM-POUND}  {CBM-POUND}  {gry2}{CBM-POUND} {wht}{CBM-*}{rvon} {rvof}";
+ 5926 print"{$a0}{$a0}{$a0}{gry1}{CBM-POUND}{CBM-POUND}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{gry2}{CBM-POUND}  {gry3}{CBM-POUND}{wht}{CBM-*}";
+ 5929 v=3:gosub750:g$="{wht}du hast fulgore besiegt!":goto7000
+ 5950 poke780,2:gosub9200:gosub6000
+ 5955 v=3:gosub750:g$="{wht}fulgore hat dich besiegt!":goto7000
+ 6000 print"{clr}              {red}niederlage!"
+ 6002 print"    {wht}du bist gescheitert, wie schon"
+ 6004 print"{$a0}{$a0}{$a0}{$a0}{$a0}viele andere zwerge vor dir."
+ 6006 print"  sledgie bleibt fulgores gefangener.{down}"
+ 6008 print" {$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0} {gry1}{rvon} {gry2}OO{gry1}{CBM-H}{gry2}OO{gry1}{CBM-H}{gry2}O{gry1}{CBM-H}{gry2}{CBM-H}{gry1}O{gry2}O{gry1}O{gry3}{rvof}             ";
+ 6010 print"   {$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{gry1}{rvon}{CBM-N}{gry2}P{CBM-N}{CBM-Y}L{CBM-H}OL{CBM-H}OLOLO{CBM-H}OO{gry1}O{rvof}           ";
+ 6012 print"{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{gry1}{rvon}{CBM-N}{gry2}P{CBM-N}P L{gry1} {gry3}{rvof} {gry1}:{gry3}{$a0}{$a0}{$a0}{gry2}{rvon}L{gry1}{CBM--}{gry2}{CBM-@}O{CBM-H}{CBM-H}OO{gry3}{rvof} {gry2} {red}  {lblu} {red}{$a0}{$a0}{$a0}{$a0}{$a0}";
+ 6014 print"{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{$a0}{gry2}{rvon}P{CBM-Y}PP{gry3}{rvof} {gry1}{CBM--}{red} {gry1}{rvon}{CBM-M}{gry2}{rvof}  {red}{rvon}{SHIFT-POUND} {blu}{rvof} {gry1}:{rvon}{CBM-G}{rvof}{CBM-G}{red} {lblu} {gry2}{rvon}OO{CBM-H}O{lblu}{rvof} {red} {rvon} {CBM-N}{gry2} {CBM-N}{red}  {rvof} ";
+ 6016 print"        {gry1}{rvon}{CBM-N}{gry2}{CBM-N}{CBM-Y}{gry1}'{gry3}{rvof}  {red}  {gry1}{rvon}{CBM--}{red}{rvof} {rvon}{CBM-V}  {CBM-C}{lblu}{rvof} {gry1}{rvon}{CBM-H}{rvof}{CBM-G}:{gry3} {gry2}{rvon}{CBM-H}{gry1}{CBM-M}{gry2}{CBM-Y}{CBM-H}{gry1}O{gry3}{rvof} {red} {gry2}{rvon}{CBM-Y}P{orng}{CBM-Y}P{rvof}  ";
+ 6018 print" {gry2}{rvon}{CBM-P}L{CBM-P}{red}L{CBM-P}{gry2}{rvof} {gry3} {gry2}{rvon}PP{gry1}{rvof}{CBM-M}{rvon} {yel}{rvof} {gry3} {gry2}:{red} {gry1}{rvon}{CBM-G}{red}{CBM-K}   {CBM-B}{CBM-C}{gry1}{CBM-G}{rvof}{CBM-G}{lblu} {gry3} {lblu} {gry1}{rvon}'{gry2}{rvof} {rvon}O{gry1}{CBM-H}{gry3}{rvof} {gry2}{rvon}{CBM-Y}P{orng}{CBM-Y}P{gry2}{CBM-Y}{rvof}  ";
+ 6020 print"  {gry2}{rvon}{CBM-P}L{CBM-P}L{CBM-P}{gry1}{rvof}{CBM-N}{gry2}{rvon}P{red}{rvof} {yel} {gry1}{rvon} {gry3}{rvof} {yel}{CBM--}{gry2}:{lred} {gry1}{rvon}{CBM-M}{red} {CBM-POUND}  {CBM-POUND} {gry1}{CBM--}{gry3}{rvof} {gry1}{CBM-POUND}{CBM-POUND}{lblu} {gry1}{rvon} {rvof}{CBM-G}{orng} {gry2}{rvon}{CBM-Y}{gry1}{rvof}{CBM-H}       ";
+ 6022 print"  {gry2} {rvon}{CBM-P}{red}L{CBM-P}{gry2}L{gry1}{rvof}{CBM-M}{gry2}{rvon} {rvof}{CBM-G}{lblu} {gry1}{rvon}{CBM--}{rvof}{CBM-Q}{brn}{rvon}{CBM-L}{gry1}{rvof}:{blu} {gry1}{rvon}{CBM-M}{red} {lred}Q  Q{red} {gry1}{CBM--}{rvof}{CBM-M}{brn}{rvon}&&{lblu}{rvof} {gry1}{rvon}{CBM-G}{yel}{rvof} {gry2}{CBM-M}{rvon} {rvof}{CBM-G}       ";
+ 6024 print"  {red}{rvon}{CBM-P}{orng}L{CBM-P}{gry2}{rvof} {red} {gry1}{CBM-M}{gry2}{rvon}O{lblu}{rvof}  {gry1}{rvon}{CBM-G}{rvof}:{brn}{CBM-V}{lblu} {blu} {gry1}{rvon}{CBM--}{wht}{CBM-J}{lred} K  {wht}{CBM-L}{gry1}{CBM-G}{rvof}{CBM-M}{brn}{rvon}&{gry1}&{lblu}{rvof} {gry1}{rvon} {yel}{rvof} {orng} {gry2}{rvon}O{gry1}{rvof}{CBM-J}  {$a0}{$a0}{$a0}{$a0}{$a0}";
+ 6026 print"{gry2}{rvon}L{CBM-P}L{CBM-P}{orng}L{CBM-P}{red}{rvof} {gry1}{CBM-N}{gry2}{rvon}{CBM-M}{lblu}{rvof}  {gry1}{rvon} {rvof}{CBM-G}{lblu} {gry1}{CBM-POUND}{red} {gry1}{rvon}{CBM-M}{wht}{CBM--}{lred} CI {wht}{CBM--}{lred} {blu}{CBM-*}{gry1}&&{rvof}{CBM-POUND}{rvon} {yel}{rvof} {orng} {gry2}{rvon} {rvof}{CBM-J}{gry3} {lblu}      ";
+ 6028 print" {orng}{rvon}  {gry2}{CBM-H} {CBM-H} {gry1}{rvof}{CBM-L}{gry2}{rvon}P{lblu}{rvof}  {gry1}{rvon} {rvof}{CBM-POUND}{lblu} {red} {gry1}{CBM-M}{rvon}{CBM-M}{wht}{rvof}{CBM-*}{rvon}{CBM-POUND}{lred}  {wht}{CBM--}{rvof}{SHIFT-POUND}{gry1}{rvon}{CBM-T}{blu}{CBM-G}{lblu}{rvof}   {gry1}{rvon}{CBM-G}{rvof}{CBM-G}{orng} {gry2}{rvon}P{gry1}{rvof}{CBM-H}{gry3} {gry2}{rvon}{CBM-P}{red}L{CBM-P}{gry2}L{SHIFT-@}{rvof} ";
+ 6030 print"       {gry1}{CBM-M}{gry2}{rvon} {rvof}{CBM-G}{gry1}{CBM-POUND}{rvon}{CBM-G}{lblu}{rvof}   {blu}{rvon}{SHIFT-POUND}{gry1} {blu}{CBM-G}{wht}{rvof}{CBM-*}{rvon}{CBM--}{CBM-+}{rvof}{SHIFT-POUND}{blu}{rvon}{CBM--}{gry1}{CBM-G}{blu}{rvof}{SHIFT-POUND}{lblu}   {gry1}{rvon}{CBM-G}{rvof}{CBM-G}{CBM-POUND}{gry2}{rvon} {gry1}{rvof}{CBM-G}{gry3} {lblu} {gry2}{rvon}{CBM-P}{orng}L{CBM-P}{gry2}{rvof}  ";
+ 6032 print"       {gry1}{CBM-M}{gry2}{rvon}P{red}{rvof} {lblu} {gry1}{rvon}'{rvof}{CBM-G}  {blu}{rvon} {gry1}{CBM-M}{blu}M{rvof}{CBM-+}{wht}{CBM-*}{SHIFT-POUND}{blu}{rvon}{CBM-+}N{gry1}{CBM--}{lred}{rvof} {lblu} {gry2}{rvon}{CBM-K}{rvof}{CBM-K}{gry1}{rvon}{CBM-G}{lblu}{rvof} {gry3} {gry2}{rvon}O{gry1}{rvof}{CBM-H}{red} {orng}{rvon} {red}{CBM-H} {gry2}{CBM-H} {rvof} ";
+ 6034 print"       {gry2}{CBM-L}{rvon}{CBM-M}{red}{rvof}  {gry1}{rvon} {lgrn}{rvof}{$a0}{$a0}{$a0}{blu}{rvon}{CBM-G}{lred}{CBM-@}{blu}{rvof}{CBM-*}{CBM-+}{rvon}{CBM-+}{CBM-+}{CBM-+}{rvof}{SHIFT-POUND}{gry1}{rvon}{CBM-H}{rvof}{CBM-G}{lblu} {grn}{rvon}{CBM--}{lgrn} {gry1}{CBM--}{rvof}{CBM-G}{lblu} {gry2}{rvon} {gry1}{rvof}{CBM-G}       ";
+ 6036 print"       {gry1}{CBM-N}{gry2}{rvon}{CBM-Y}{gry3}{rvof}{CBM-@}{CBM-P}{gry1}{rvon} {gry3}{rvof}{CBM-@}  {gry3}{CBM-@}{gry1}{rvon} {orng}{rvof}{CBM-L}{rvon}{CBM-T}{yel}O{orng}{CBM-Y}{CBM-T}{brn}{rvof}{CBM-K}{gry1}{rvon}{CBM-G}{grn}{rvof}{CBM-POUND},{rvon}{CBM--}{lgrn}%{gry1} {gry3}{rvof}{CBM-@}{CBM-P}{gry2}{rvon}{CBM-Y}{gry1}{rvof}{CBM-H}       ";
+ 6038 print" {$a0}{$a0}{$a0}{$a0}{$a0}{gry3}{rvon}{SHIFT-POUND}      N    {CBM-T}{CBM-Y}{CBM-T}{SHIFT--}{$a0}{$a0}{$a0}{$a0}{$a0}M{$a0}{$a0}{$a0}{$a0}{$a0}{CBM-*}{rvof}      ";
+ 6040 print"      {gry3}{rvon}{SHIFT-*}D{SHIFT-*}{SHIFT-*}{SHIFT-*}EEODDCCDEEODCDCCEOEE{CBM-Y}{CBM-Y}D{rvof}{$a0}{$a0}{$a0}{$a0}{$a0} ";
+ 6042 print"      {gry3}{rvon}{CBM-@} {CBM-@}{CBM-P}{CBM-@}{CBM-@} T {CBM-@} {CBM-@}{CBM-P}{CBM-@} T {CBM-@}{CBM-@}{CBM-P}{CBM-@}{CBM-N}{CBM-@} {CBM-P}{CBM-@} {CBM-@}{rvof}"
+ 6044 return
+ 6200 i=ut:ifut<.theni=int(rnd(1)*7):rem drakri per zufall
+ 6202 k$="{wht}drakri":kw=(90-i*7)+n%:k%=15:bb%=kw-rnd(1)*7:ut=ut-1
+ 6205 c$=mid$("{grn}{orng}{red}{blu}{gry2}{gry3}{yel}{wht}",d%+1,1):ifi<3then6225
+ 6220 sysq,29,1,"{wht}{rvon}M{CBM-POUND}N{rvof} {gry3}{rvon}{SHIFT-POUND}{down}{left}{left}{left}{left}{left}{wht}{rvon}Q Q{rvof} {gry3}{rvon}&{down}{left}{left}{left}{left}{left}{left}{left}";:rem drakri schwert
+ 6222 print"{rvof}{red}{CBM-@}{wht} {rvon}{CBM-H}{CBM-E}{CBM-N}{rvof} {gry3}{rvon}&{down}{left}{left}{left}{left}{left}{left}{left}{left}{gry1}{rvon}{CBM-POUND}{red}{CBM-M}{gry2}{CBM-POUND}{wht}{rvof}{CBM-C}{rvon}{CBM-U}{rvof}{CBM-V} {gry3}{rvon}&{down}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 6224 print"{gry1}{rvon}{CBM-A}{red} {gry2}{CBM-S}{wht}{CBM-D}{gry3}{rvof}{SHIFT-+}{wht}{rvon}{CBM-F}{rvof}{CBM-B}{brn}{rvon}{CBM-H}{gry2}{rvof}K";:goto6230
+ 6225 sysq,28,1,"{gry1}{CBM-D}{rvon}M{CBM-P}N{rvof}{CBM-F}{brn}{CBM-D}{gry3}{rvon}{SHIFT-POUND}{rvof}{CBM-H}{down}{left}{left}{left}{left}{left}{left}{left}{left}";:rem drakri helm axt
+ 6226 print"{gry1}{rvon}{CBM-J}{wht}Q Q{gry1}{CBM-L}{brn}{CBM-K}{gry3}B{rvof}{CBM-J}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{red}{CBM-@}{gry1}{CBM-L}{wht}{rvon}{CBM-H}{CBM-E}{CBM-N}{gry1}{rvof}{CBM-J}{brn}{CBM-L}{gry3}{rvon}H{rvof}{CBM-J}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}";
+ 6228 print"{gry1}{rvon}{CBM-POUND}{red}{CBM-M}{gry2}{CBM-POUND}{wht}{rvof}{CBM-C}{CBM-I}{CBM-V}{gry1}{CBM-V}{brn}{rvon}{CBM-K}{gry3}{rvof}{CBM-*}{CBM-H}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{gry1}{rvon}{CBM-A}{red} {gry2}{CBM-S}{wht}{CBM-D}{gry3}{rvof}{SHIFT-+}{wht}{rvon}{CBM-F}{rvof}{CBM-B}{brn}{rvon}{CBM-K}{rvof}{CBM-G}";
+ 6230 sysq,26,6,"{gry1}{rvon}{CBM-A}{red} {gry2}{CBM-S}{wht}{CBM-B}{gry3}{rvof}{SHIFT-+}{wht}{CBM-B} {rvon}{CBM-F}{rvof}{CBM--}{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}{gry1}{rvon} {red}{CBM-M}{gry2} {wht}{rvof}{CBM-I}{SHIFT-+}{CBM-I} {brn}{CBM-C}{down}{left}{left}{left}{left}{left}{left}{left}{left}{red}";:print"{rvon}{CBM-T}"c$">{red}{CBM-T}{wht}{CBM-B}{CBM-O}{rvof}{CBM-B}"
+ 6231 sysq,26,9,"{gry1}{CBM-*}{red}{rvon}{CBM-M}{gry2}{rvof}{SHIFT-POUND}{wht}{CBM-J} {CBM-L}{CBM-@}{down}{left}{left}{left}{left}{left}{wht}D{CBM-V} {CBM-C}D":gosub9670
+ 6240 gosub570:gosub4400:ifa%=1thengosub1600:goto6250
+ 6245 gosub4410:gosub750:gosub680
+ 6250 gosub570:return
+ 7000 poke780,2:gosub9200:ifa%<0thengosub6000:a%=0:v=3:gosub750
+ 7001 print"{clr}";:printspc(20-len(g$)/2)g$:c%=30
+ 7002 sysq,1,2,"{yel}Q  {wht}deine quest endet bei {orng}ebene"lv"{yel} Q"
+ 7004 a%=(d%*d%+d%)/2*100:b%=s%*2000:e=1000:iflv>6theniflv<12thene=(12-lv)*1000
+ 7006 print"{gry3}{down}       abenteuerpunkte{yel}"tab(c%-len(str$(pu)))pu
+ 7010 print"{yel}"tab(17-len(str$(g)))g"gold {gry2}+{yel}"tab(c%-len(str$(g+g)))g+g
+ 7012 printtab(6)"{cyn}"d%"von 7 drachen {gry2}+{yel}"tab(c%-len(str$(a%)))a%
+ 7014 printtab(5-len(str$(ga%)))"{lblu}"ga%"von 12 missionen {gry2}+{yel}";:ga%=ga%*250:printtab(c%-len(str$(ga%)))ga%
+ 7020 ifs%=0thene=0:goto7040
+ 7025 print"{pur}       fulgore besiegt {gry2}+{yel}"tab(c%-len(str$(b%)))b%
+ 7030 printtab(14-len(str$(lv)))"{pur}in {orng}ebene"lv"{gry2}+{yel}"tab(c%-len(str$(e)))e
+ 7040 printtab(25)"{gry2}DDDDD{yel}":pu=pu+g+g+a%+b%+e+ga%:print"{wht}      erreichte punkte{yel}"tab(c%-len(str$(pu)))pu"{down}"
+ 7050 gosub900:poke214,15:print:gosub7100:v=3:gosub750:gosub9250:goto30
+ 7100 print"{wht}{down}zwergenheld punkte erfolge & rang":forii=0to4
+ 7102 print"{gry3}"n$(ii)tab(18-len(str$(p(ii))))"{yel}"p(ii)tab(19)r$(ii):next:return
+ 7110 print"{down}{wht}idee & konzept {cyn}sledgie{down}":print"{wht}programm {cyn}sledgie{gry3}, {cyn}retrolynx{gry3}, {cyn}1570"
+ 7113 print"{wht}grafik {cyn}sledgie{gry3}, {cyn}retrolynx{gry3}, {cyn}daimansion"
+ 7115 print"{wht}musik & sfx {cyn}richard bayliss{gry3}, {cyn}retrolynx":return
+ 7120 print"{down}{blk} fulgore, der orkschamane, h\lt":print" sledgie in seinem kerker gefangen,"
+ 7122 print" der von 7 drachen bewacht wird.{down}":print" steige mutig hinab in die mine,"
+ 7125 print" besiege fulgore und rette sledgie!":return
+ 7200 ifab%=.andlv>3thena$="abstinenz":ab%=-1:gosub197:goto7202:rem exit
+ 7201 ifab%=1thenab%=.
+ 7202 poke780,3:tw=60:gosub9270
+ 7204 print"{clr}";:print"{wht}du hast {orng}ebene"lv"{wht}]berlebt!"
+ 7208 a%=lv*100:iflv>5thena%=500
+ 7210 a%=a%+l:print"{down}{cyn} bonuspunkte      {gry2}+{yel}"tab(23-len(str$(a%)))a%
+ 7215 pu=pu+a%:print"{down}{gry3} abenteuerpunkte{yel}"tab(23-len(str$(pu)))pu"{down}{down}"
+ 7216 gosub8300:printchr$(13)"{down}{wht}dein rucksack enth\lt":z=.
+ 7218 forii=13to25:ifw(ii,2)=1thenprint" "w$(ii):z=z+1
+ 7219 next:ifz=.thenprint" {cyn}nichts"
+ 7229 print"{down}{down}{wht}"n$", du hast die wahl{gry3}..."
+ 7230 print"{down} {grn}zum wirtshaus   {orng}n\chste ebene";:h=2:b%=16:gosub700
+ 7235 ifa%=2thenes%=es%+1
+ 7240 ifa%=1thengosub8000:h%=0:rem go tavern
+ 7300 lv=lv+1:ae=0:cf=0:wd=0:ts=0:sw=0:gosub7800:a%=fre(0):goto100
+ 7800 print:print"{wht}du steigst hinab zur {orng}ebene"lv"{left}{brn}";
+ 7805 ti$="000000":ifu=1thensysq,1,22,"{wht}du f\llst und verlierst gold{brn}.";:g=int(g*.8)
+ 7810 print".";:gosub1000:print".";
+ 7860 bi=int(rnd(.)+0.8*lv):iflv<2thenbi=lv
+ 7862 fa=int(rnd(.)+0.7*lv)
+ 7863 es=int(rnd(.)+0.6*lv):iflv<2thenes=lv
+ 7864 fe=int(rnd(.)+0.5*lv)
+ 7865 ko=int(rnd(.)+0.4*lv)
+ 7866 ok=lv
+ 7867 we=int(rnd(.)+0.5*lv)
+ 7868 wi=int(rnd(.)+0.6*lv):iflv<3thenwi=lv-1
+ 7869 tr=int(rnd(.)+0.7*lv)-1
+ 7870 iflv=5thentr=10:rem zombie-level
+ 7875 gn=1:iflv>3thengn=2
+ 7876 iflv>4thenkk%=15:gosub670:rem drakri
+ 7878 kk%=3:forii=1togn:gosub670:next
+ 7879 iflv>14thenbi=12:fa=10:es=9:fe=7:ko=6:ok=15:we=7:wi=9:tr=9
+ 7880 ifbi>0thenkk%=4:forii=1tobi:gosub670:next
+ 7881 iffa>0thenkk%=5:forii=1tofa:gosub670:next
+ 7882 ifes>0thenkk%=6:forii=1toes:gosub670:next
+ 7883 iffe>0thenkk%=7:forii=1tofe:gosub670:next
+ 7884 print".";:ifok>0thenkk%=9:forii=1took:gosub670:next
+ 7885 ifko>0thenkk%=8:forii=1toko:gosub670:next
+ 7886 ifwi>0thenkk%=11:forii=1towi:gosub670:next
+ 7887 ifwe>0thenkk%=10:forii=1towe:gosub670:next
+ 7888 iftr>0thenkk%=12:forii=1totr:gosub670:next
+ 7889 iflv>2thenifd%<7thenkk%=13:gosub670
+ 7890 iflv>4thenkk%=14:gosub670:rem 5->3 fulgi 2.0
+ 7891 iflv=3thenifnq=1thenforii=16to18:kk%=ii:gosub670:next
+ 7892 print".";:iflv=4thenifnq=1thenforii=19to21:kk%=ii:gosub670:next:rem 18 to 20
+ 7893 ifti<300then7893
+ 7897 k$(13)=mid$("{grn}{orng}{red}{blu}{gry2}{gry3}{yel}",d%+1,1)+"{rvon}>":return
+ 7900 zo=zo+1:ifg<1thensysq,1,11,"du hast kein gold";:gosub750:return
+ 7902 a%=3:ifg>50thena%=2:ifg>99thena%=1
+ 7905 ifzo>a%thensysq,1,11,"niemand will spielen";:gosub750:return
+ 7910 sysq,2,12,"{gry1}X A{red} S Z{wht} zwergen-poker {red}Z S {gry1}A X"
+ 7912 print"{down}{down}{wht}deine karte   ";:gosub7960
+ 7926 xs=x:ys=y:print" {cyn}>{wht}du setzt    {yel}gold{left}{left}{left}{left}{left}{left}{left}{left}";:h=g:ifh>99thenh=99
+ 7928 v=2:gosub700:sysq,0,17,"{wht}shmendric hat ";:gosub7960
+ 7945 ifys>ythensysq,1,20,"{grn}du gewinnst{yel}"a%"gold";:g=g+a%:rem poke780,6:tw=60:gosub9270
+ 7950 ifys<ythensysq,1,20,"{red}du verlierst{yel}"a%"gold";:g=g-a%
+ 7955 ifys=ythensysq,1,20,"{gry3}unentschieden";
+ 7956 d=4:gosub750:return
+ 7960 x=int(rnd(1)*4):y=int(rnd(1)*13):ifx=xsthenify=ysthen7960
+ 7962 printmid$("{red}S{gry2}X{red}Z{gry2}A",x+x+1,2)mid$("2 3 4 5 6 7 8 9 10b d k a ",y+y+1,2);
+ 7964 return
+ 7970 ib=1:ifh%=1then7974
+ 7971 r%=lv-1
+ 7972 iflv>4thenr%=rnd(1)*4:ifr%=vh%then7972
+ 7973 k$=mid$("{gry3}tele{gry2}{gry2}{gry2}{lblu}lynx{blu}{blu}{blu}{lgrn}jammet{grn}{red}pat{brn}{brn}{brn}{brn}",r%*8+1,8):ps=r%/5+.6:vh%=r%
+ 7974 sysq,2,8,"{brn}{rvon}{CBM-+}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-E}{CBM-+}{rvof}"
+ 7975 print"   {grn}Z{red}S {blu}H{rvon}{SHIFT--}{brn}G{yel}{CBM-N}{lgrn}P{pur}P{rvof}     {brn}{CBM-T}{CBM-Y}{rvon}{CBM-F}G{CBM-D}{rvof}{CBM-Y}{gry3}{CBM-G}{red}J{pur}K{red}:"
+ 7976 print"   {grn}Z{red}S {yel}'{blu}{CBM-L}{brn}{rvon}G{rvof}{CBM-R}{SHIFT-*}{CBM-R}       {brn}{CBM-N}{rvon}B{rvof}{CBM-H}{cyn}{rvon}{SHIFT-POUND}{wht}{CBM-*}{rvof}  {red}:"
+ 7977 print"   {lgrn}Z   {yel}'{brn}{rvon}G{rvof}          {brn}{CBM-M}{rvon}G{rvof}{CBM-G}{blu}{CBM-*}{lblu}{SHIFT-POUND} {brn}{rvon}{CBM--}{rvof}"
+ 7978 print"     {blu}{rvon}O{gry1}{rvof}{CBM-O} {brn}{rvon}B{lblu}{rvof}{CBM-O}          {brn}{rvon}B{lgrn}{rvof}{CBM-@}{lblu}{CBM-@} {brn}{CBM-D}{rvon}{CBM--}{rvof}{CBM-F}"
+ 7981 print"   {gry1}{rvon}{CBM-Y}{gry2}P{blu}{CBM-POUND}{gry1}{rvof}{CBM-+}{blu}{CBM-POUND}{brn}{rvon}G{lgrn}{rvof}{CBM-@}{cyn}{CBM-H}        {red}Q{brn}{rvon}B{lgrn}${lblu}${orng}{rvof}E{CBM-J}{gry2}{rvon}H{rvof}"
+ 7983 print"   {brn}{CBM-L}{orng}{CBM-H}{lblu}{rvon}{CBM-POUND}{gry2}{CBM-POUND}{blu}{CBM-M}{brn}B{grn} {cyn}{rvof}{CBM-H}       {red}Q{orng}Q{brn}{rvon}H{lblu}${lgrn}${rvof} {orng}{CBM-J}{gry2}{rvon}H"
+ 7985 print"   {rvon}{brn}{CBM-+}E{lblu}{CBM-M}{gry2}{CBM-M}{brn}{CBM-Y}BF;CWDDDC{red}{rvof}Q{orng}Q{red}Q{brn}{rvon}H{orng}{rvof}Q{brn}{rvon}DCF{CBM-+}{rvof}"
+ 7987 print"  {rvon}{CBM-+}FCCEEC;;WCDWDCCDDCDDCCF{CBM-+}{rvof}"
+ 7988 print"{down} "k$"{gry3} bietet seine waren an:"left$(k$,1);
+ 7990 sysq,14,9,"{CBM-P}{down}{left}{left}{rvon}{CBM-V}{rvof}{CBM-U}{rvon}{CBM-C}{down}{left}{left}{left}{CBM-L}{rght}{CBM-J}{down}{left}{left}{left}{CBM-J}{CBM-U}{CBM-N}{down}{left}{left}{left}{left}{SHIFT-POUND}G{CBM-T}{rght}{CBM-*}{down}{left}{left}{left}{left}{left}{CBM-M}{CBM-G}{rght}{rght} {rvof}";
+ 7991 printright$(k$,1);:print"{left}{up}{up}{up}{CBM-H}{down}{left}{CBM-V}{down}{left}{left}{rvon}H{down}{left}{left} {CBM-L}{rvof}{up}{up}{up}{left}{left}{gry1}{CBM-POUND}{rght}{rght}UI{down}{left}{left}B{down}{left}B{down}{left}{lred}{rvon}G{left}{left}{left}{left}{left}{left}{left}{lred}{CBM-V}{rvof}"
+ 7992 sysq,1,20,"{rvof}{cyn}ich schaue nur...":gosub4211:goto8020
+ 8000 ka=0:zo=0:h%=2:c$=a$(int(rnd(1)*12))+" "+b$(int(rnd(1)*12))
+ 8001 y=len(c$)+6:x=int(17-y/2):a$="{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}"
+ 8005 print"{clr}";:sysq,11,0,"{orng}{CBM-R}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{SHIFT-*}{CBM-R}":f=int(rnd(1)*3)+26
+ 8006 sysq,x,1,"{orng}{CBM-R}"left$(a$,y-2)"{CBM-R}":print"{up}"spc(11)"K{yel}wirtshaus{orng}J"
+ 8007 sysq,x,2,"{orng}{SHIFT--}{wht}zum "c$"{orng}{SHIFT--}":sysq,x,3,"{CBM-E}"left$(a$,y-2)"{CBM-E}":a$=""
+ 8010 iflv=2thengosub8200:x=5:gosub8198
+ 8012 iflv=4thenifnq=1thengosub8240:x=5:gosub8198
+ 8014 iffb>.andl1=.thengosub8400:x=5:gosub8198
+ 8016 ifl1=lvthengosub8500:x=5:gosub8198
+ 8020 x=8:gosub8198:sysq,0,5,l$;:sysq,0,5,"{cyn}dein status:"
+ 8025 gosub8300:print"{up}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{left}{orng}inventar";:printi%"{left}/4"
+ 8026 sysq,0,8,"{wht}"n$", du m[chtest..."
+ 8030 h=2:ifh%>0thensysq,1,10,"{lgrn}zum h\ndler gehen":h=3
+ 8031 ifh%<1thensysq,1,15,"{gry2}{gry1}der h\ndler hat geschlossen"
+ 8032 sysq,1,11,"{lblu}zwergen-poker spielen"
+ 8034 sysq,1,12,"{orng}zum tisch gehen und bestellen";:v=1:gosub700
+ 8050 x=8:gosub8198:x=0:ifh%>0thenx=1:ifa%=1then7970
+ 8054 ifa%=1+xthengosub7900:goto8020
+ 8080 b$="{down}{wht} du hast nicht genug gold":c$="{gry2} bring mir was anderes"
+ 8090 x=10:gosub8198:sysq,0,8,"{wht}was darf es sein?"
+ 8092 sysq,1,10,"{lred}speisen  {pur}tr\nke   {lgrn}men]s    {orng}wirtshaus{down}{left}{left}{left}{left}{left}{left}{left}{left}{left}verlassen{up}";
+ 8096 h=4:b%=9:gosub700:x=10:gosub8198:ona%goto8120,8140,8160,8199:rem 7290
+ 8120 sysq,4,10,"{orng}JKJKJK {lred}speisekarte {orng}JKJKJK"
+ 8121 print"{down}{wht} troll-eintopf         {lred}+15%  {gry1}-{yel}"int(.15*lv)
+ 8122 print"{wht} frittierte feenfl]gel {lred}+25%  {gry1}-{yel}"int(.5*lv)
+ 8123 print"{wht} orkische hammelkeule  {lred}+35%  {gry1}-{yel}"int(1.5*lv)
+ 8124 printc$;:v=1:h=4:gosub700:ifa%=4then8090
+ 8130 ifa%=1thenk%=.15*lv
+ 8131 ifa%=2thenk%=.5*lv
+ 8132 ifa%=3thenk%=1.5*lv
+ 8133 ifk%>gthenprintb$;:gosub750:goto8090
+ 8134 g=g-k%:l=l+5+a%*10:rem ifa%=2theng=g-k%:l=l+25
+ 8137 goto8190
+ 8140 sysq,3,10,"{lblu}{CBM-Z}{CBM-X}{CBM-Z}{CBM-X}{CBM-Z}{CBM-X} {pur}getr\nkekarte {lblu}{CBM-Z}{CBM-X}{CBM-Z}{CBM-X}{CBM-Z}{CBM-X}"
+ 8141 print"{down}{cyn} schlangenwein"tab(17)"{lred}+ 5% {pur}+1.5   {gry1}-{yel}"int(.25*lv)
+ 8142 print"{cyn} donnergurgler"tab(17)"{lred}+20% {pur}+0.2   {gry1}-{yel}"lv
+ 8143 print" "left$(w$(f),12)tab(17)right$(w$(f),11)"   {gry1}-{yel}"2*lv
+ 8144 printc$;:v=1:h=4:gosub700:ifa%=4then8090
+ 8150 ifa%=1thenk%=.25*lv
+ 8151 ifa%=2thenk%=lv
+ 8152 ifa%=3thenk%=lv+lv
+ 8153 ifk%>gthenprintb$;:gosub750:goto8090
+ 8154 g=g-k%:ifa%=1thenl=l+5:pm=pm+1.5
+ 8155 ifa%=2thenl=l+20:pm=pm+0.2
+ 8156 ifa%=3thenl=l+w(f,0):pm=pm+w(f,1)
+ 8157 goto8190
+ 8160 sysq,4,10,"{brn}{CBM-Q}{CBM-S}{CBM-R}{SHIFT-*}{CBM-R}{CBM-A}{CBM-W} {lgrn}men]karte {brn}{CBM-Q}{CBM-S}{CBM-R}{SHIFT-*}{CBM-R}{CBM-A}{CBM-W}"
+ 8161 sysq,5,11,"{gry2}({lred}jedes men] 100% leben{gry2}){down}"
+ 8163 print"{gry3} standard {wht}maulwurfragout {pur}+2.5 {gry1}-{yel}";:print2*lv
+ 8164 print"{gry3} deluxe   {wht}einhornbraten  {pur}+3.0 {gry1}-{yel}";:print4*lv
+ 8165 print"{gry3} maxi     {wht}halber drache  {pur}+3.5 {gry1}-{yel}";:print8*lv
+ 8166 printc$;:v=1:h=4:gosub700:ifa%=4then8090
+ 8170 ifa%=1thenk%=2*lv
+ 8171 ifa%=2thenk%=4*lv
+ 8172 ifa%=3thenk%=8*lv:gt%=gt%+1
+ 8173 ifk%>gthenprintb$;:gosub750:goto8090
+ 8174 g=g-k%:l=100:ifa%=1thenpm=2.5
+ 8175 ifa%=2thenpm=3
+ 8176 ifa%=3thenpm=3.5
+ 8190 ifk%=0thenprint"{down}{wht}der wirt l\dt dich ein und du":goto8192
+ 8191 print"{down}{wht}du zahlst{yel}"k%"gold{wht} und"
+ 8192 print"l\sst es dir schmecken.{down}"
+ 8193 ifg<0theng=0
+ 8194 ifl>100thenl=100
+ 8195 ifpm<.thenpm=.
+ 8196 k%=0:gosub8300:print:return:rem to7240
+ 8198 forii=xto24:sysq,0,ii,"                                       ";:next:return
+ 8199 poke214,6:print:return:rem to7240
+ 8200 print"{down}ein zwielichtiger gnom winkt dich von"
+ 8204 print"seinem tisch in der ecke zu sich."
+ 8206 print"{down}{gry3}gnom:":print"{cyn} in den g\ngen hat fulgore magische"
+ 8207 print" runen versteckt. finde alle 6"
+ 8208 print" und nenne mir die zeichen bei"
+ 8209 print" unserer n\chsten zusammenkunft."
+ 8210 print" ich werde dich angemessen entlohnen."
+ 8213 print"{down}{orng}nimmst du den auftrag an?  ja  nein";:h=2:b%=4:c%=26:gosub700
+ 8214 ifa%=1then8220
+ 8215 print"{up} schade, du sahst mutiger aus.     "
+ 8216 print"{down}{orng}der gnom verl\sst ver\rgert das"
+ 8217 print"wirtshaus und rempelt dich an."
+ 8218 print"{down}erst sp\ter bemerkst du, dass dir"
+ 8219 print"gold fehlt.":g=int((g+1)/2):v=3:gosub750:return
+ 8220 print"{up} sehr gut, ich erwarte dich im     "
+ 8222 print" wirtshaus am ende von ebene 4."
+ 8230 v=3:gosub750:nq=1
+ 8232 fora=0to2:q$=q$+mid$("asinurogemodenam",int(rnd(1)*15)+1,2):next:return
+ 8240 print"{down}du siehst den gnom am tresen sitzen.":nq=0
+ 8250 print"{down}{gry3}gnom:":print"{cyn} ah, mein zwergenfreund ist zur]ck!"
+ 8252 print" hast du alle runen gefunden?"
+ 8254 print"{down}{orng} ja  nein";:h=2:b%=4:gosub700:ifa%=1then8264
+ 8256 print"{up} dann scher dich zum drachen!":goto8216
+ 8264 print"{up} gro~artig!":print" nenne mir das runenwort: ";:a%=0:gosub800
+ 8270 ifg$<>q$thenprint:print"{down}{cyn} es birgt keine magie in sich!":goto8216
+ 8272 print:print"{down}{cyn} heureka! ich sp]re die magie!":nq=2
+ 8276 print"{down}{orng}du erh\ltst {yel}100 gold {orng}und {yel}500 punkte":g=g+100:pu=pu+500
+ 8277 v=3:gosub750:return
+ 8300 print"{lred}leben"l"{left}%"tab(11)"{pur}promille ";:gosub25:printo$"{yel}  gold"g"{left}  ";:return
+ 8400 print"{down}ein verzweifelt aussehender zwerg":print"tritt an dich heran."
+ 8402 print"{down}{gry3}zwerg:":print"{cyn} fulgore hat meine frau verflucht!"
+ 8403 print" sie irrt jetzt in gestalt eines orks"
+ 8404 print" durch die g\nge! verschone bitte"
+ 8405 print" jeden ork, den du triffst und finde"
+ 8406 print" meine frau. ich werde es dir danken!":print" im wirtshaus sehen wir uns wieder."
+ 8407 w=int(30+(g/10)):ifw>100thenw=99
+ 8408 print"{down} ich kann dir meine zauberkarte f]r":printw;:print"gold ]berlassen. willst du sie?"
+ 8409 print" {orng}ja  nein";:h=2:b%=4:gosub700:print"{up}         "
+ 8410 ifa%=2thenprint"{up}{cyn} in der tat ein wagemutiger zwerg!{down}":goto8420
+ 8411 ifg<wthenprint"{orng}dein gold reicht nicht aus!":goto8420
+ 8412 ifi%=4thenprint"{orng}dein rucksack ist zu voll!":goto8420
+ 8413 ifw(13,2)=0thenb$=w$(13):w(13,2)=1:i%=i%+1:a%=1:g=g-w:goto8415
+ 8414 print"{orng}du besitzt bereits eine karte!":goto8420
+ 8415 print"{up}{cyn} nimm meine zauberkarte, viel gl]ck!{down}"
+ 8420 print"{orng}du wirst versuchen, keine orks zu"
+ 8421 print"t[ten, bis du seine vermisste ehefrau":print"gefunden hast."
+ 8422 vo%=rnd(1)*4+5:l1=lv+1:vq=1:v=3:gosub750:return
+ 8500 l1=-1:print"{down}du siehst den verzweifelten zwerg"
+ 8501 ifvo%<0then8550
+ 8502 ifvo%>0then8560
+ 8503 print"und verk]ndest deinen erfolg.":print"{down}{gry3}zwerg:"
+ 8504 print"{cyn} du hast sie gefunden?! sie ist"
+ 8505 print" ein 'ork-w\chter' sagst du?":print" ...und sie hat dich zu einem"
+ 8508 print" trinkspiel herausgefordert?!":print" ich muss sofort zu ihr und sie"
+ 8510 print" mit daimansions zaubertrank":print" zur]ckverwandeln! mein dank an"
+ 8511 print" dich ist unermesslich!"
+ 8512 print"{down}{orng}der zwerg eilt in richtung der":print"schnarchger\usche davon."
+ 8513 print"{down}{orng}du erh\ltst {yel}1000 punkte{orng} und":pu=pu+1000:vq=2:fb=2
+ 8514 print"{orng}hast fulgore damit geschw\cht.":goto8553
+ 8550 print"und gehst ihm aus dem weg."
+ 8551 print"{down}du hast seine frau auf dem gewissen!"
+ 8552 print"blut klebt an deinen h\nden."
+ 8553 vo%=0:v=3:gosub750:return
+ 8560 print"und verk]ndest dein scheitern."
+ 8561 print"{down}{gry3}zwerg:":print"{cyn} du hast nicht richtig gesucht!"
+ 8562 print" ich hatte all meine hoffnung in dich":print" gesetzt... vergebens!"
+ 8563 print"{down}{orng}der zwerg wartet voller trauer auf"
+ 8564 print"den n\chsten helden."
+ 8565 goto8553
+ 8570 ifvq<>1thenvo%=0:return
+ 8571 ifjg<>.thenreturn
+ 8572 ifvo%>0andf=1thenvo%=-1:gosub220:gosub570:sysq,1,21,"{wht}fulgores zauber entweicht. {wht}vor dir":print" liegt die leblose zwergenfrau{red}...{up}";:d=6:gosub750
+ 8573 return
+ 8580 ifvq<>1orvo%=0thenvo%=0:return
+ 8581 ifvo%>1then8586
+ 8582 ifvo%<0thenreturn
+ 8583 gosub570:sysq,1,21,"{wht}dieser 'ork' tr\gt einen ehering. ";
+ 8584 fore=0to2:ford=0to242:poke646,d:print"{rvon}X{rvof}{left}";:next:next
+ 8585 sysq,1,22,"{wht}du hast die zwergenfrau gefunden!";:d=8:gosub750
+ 8586 vo%=vo%-1:rem ifjg<>.andk%=10thenvo%=vo%+1
+ 8587 return
+ 9000 poke780,.:gosub9200:poke198,.
+ 9001 print"{blk}{clr}";:sysq,7,0,"{wht}{CBM-POUND}{CBM-+}{CBM-+}{CBM-POUND}{down}{left}{left}{left}{left}{left}U{yel}{SHIFT-*}{SHIFT-*}{SHIFT-*}I{wht}{CBM--}{CBM-POUND}{CBM-+}{CBM-POUND}{CBM-+}{CBM-+}{CBM-POUND} {CBM-POUND}{CBM-+}{CBM-POUND}{CBM-POUND}"
+ 9002 print"      {yel}{SHIFT--}U{SHIFT-*}{SHIFT-*}K{wht}U{yel}{SHIFT-*}{SHIFT-*}I{wht}U{yel}I{wht}{CBM-+}{CBM-+}{CBM-A}{yel}{SHIFT-*}{SHIFT-*}I{wht}{CBM--}{lblu}extended"
+ 9003 print"      {yel}{SHIFT--}{SHIFT--}{wht}U{yel}{SHIFT-*}I{SHIFT--}UI{SHIFT--}{SHIFT--}{SHIFT--}{wht}{CBM-+}{CBM-+}{yel}{SHIFT--}{CBM-A}I{SHIFT--}{wht}{CBM--} {lblu}edition"
+ 9004 print"      {yel}{SHIFT--}{SHIFT--}JI{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{wht}{CBM-+}{CBM--}{yel}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{wht}{CBM--}"
+ 9005 print"      {yel}{SHIFT--}J{SHIFT-*}{wht}K{yel}{SHIFT--}{SHIFT--}J{wht}K{yel}{SHIFT--}{SHIFT--}J{SHIFT-*}I{SHIFT--}{CBM-Z}{wht}K{yel}{SHIFT--}{gry3}{CBM-+}{wht}  {cyn}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}"
+ 9006 print"      {yel}J{SHIFT-*}{SHIFT-*}{SHIFT-*}{CBM-X}J{SHIFT-*}{SHIFT-*}K{CBM-Z}{SHIFT-*}{SHIFT-*}K{CBM-Z}{SHIFT-*}{SHIFT-*}K{gry2}{CBM-+}{CBM--}{cyn}{CBM-+}{CBM-+}{blu}{rvon}   {cyn}{rvof}{CBM-+}{CBM-+}"
+ 9007 print"     {gry3}U{orng}{SHIFT-*}{SHIFT-*}{SHIFT-*}I{gry3}U{orng}I{gry3}U{orng}I{gry3}U{orng}{SHIFT-*}{SHIFT-*}I{gry2}U{orng}{SHIFT-*}I{gry2}U{orng}{SHIFT-*}{SHIFT-*}I{cyn}{CBM-+}{CBM-+}{blu}{CBM-Y}{CBM-Y}{CBM-Y}{rvon}  {rvof}"
+ 9008 print"     {orng}{SHIFT--}U{SHIFT-*}I{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}U{SHIFT-*}K{SHIFT--}UKJIUK{cyn}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{blu}{CBM-Y}"
+ 9009 print"     {orng}{SHIFT--}{SHIFT--}{gry1}{CBM-+}{orng}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}JI{gry1}{CBM-+}{orng}{SHIFT--}J{SHIFT-*}I{SHIFT--}{SHIFT--}{gry1}{CBM--}{cyn}{CBM-+}{CBM-+}{blu}{rvon}   {cyn}{rvof}{CBM-+}{CBM-+}"
+ 9010 print"     {orng}{SHIFT--}{SHIFT--}{gry1}{CBM--}{orng}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}{SHIFT--}UK{gry1}{CBM--}{orng}J{SHIFT-*}I{SHIFT--}{SHIFT--}{SHIFT--}{wht} {cyn}{CBM-+}{CBM-+}{blu}{CBM-Y}{CBM-Y}{CBM-Y}{cyn}{CBM-+}{CBM-+}"
+ 9011 print"     {orng}{SHIFT--}J{SHIFT-*}{gry2}I{orng}JIJ{gry2}K{orng}{SHIFT--}{SHIFT--}J{SHIFT-*}I{gry2}U{orng}{SHIFT-*}{gry2}K{orng}{SHIFT--}{SHIFT--}{SHIFT--}{wht} {blu}{rvon} {cyn}{rvof}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{CBM-+}{blu}{rvon} {rvof}"
+ 9012 print"     {orng}J{SHIFT-*}{SHIFT-*}J{SHIFT-*}K{SHIFT-*}{SHIFT-*}K{CBM-Z}{SHIFT-*}{SHIFT-*}KJ{SHIFT-*}{SHIFT-*}KJK{wht} {blu}{CBM-Y}{rvon}     {rvof}{CBM-Y}"
+ 9013 print"    {yel}im bann der 7 drachen {blu}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}{CBM-Y}"
+ 9014 print"     {gry1}{CBM-T}{CBM-T}{gry2}{CBM-T}{CBM-T}{gry3}{CBM-T}{CBM-T}{CBM-T}{wht}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{gry3}{CBM-T}{CBM-T}{CBM-T}{gry2}{CBM-T}{CBM-T}{gry1}{CBM-T}{CBM-T}"
+ 9016 sysq,7,23,"{orng}dr]cke eine taste und"
+ 9017 sysq,3,24,"lass dein abenteuer beginnen!";:a%=0
+ 9020 sysq,0,14,"":jj=640:a%=a%+1:ifa%>3thena%=1
+ 9021 forii=0to6:print"                                       ":next
+ 9022 ti$="000000":tw=ti:sysq,0,14,"":ona%gosub7100,7120,7110
+ 9023 gett$:j=peek(56320)and127:ifj=111ort$<>""then9030
+ 9024 ifa%=2andjj<880thenpokeco+jj,1:jj=jj+1:tw=1:gosub20:ti$="000002":goto9023
+ 9025 ifti<300then9023
+ 9026 goto9020
+ 9030 ift$="H"thenifid>3thengosub9260:open1,id,15,"s:ruhm":close1:gosub9330:goto9001
+ 9031 ift$="8"ort$="9"thenpoke186,val(t$):gosub9300:goto9001
+ 9034 ift$="f"thengosub9070:goto9025
+ 9035 rem ift$="s"thengosub9250:gosub9600:gosub9200
+ 9038 return
+ 9050 f=0:ifpeek(52992)=76thenf=1:rem if music helper is present, assume charsets are, too
+ 9051 return
+ 9060 gosub9050:iff=0thenprintchr$(142);:return
+ 9061 sc=50217:poke56576,148:ifpeek(648)<>196thenprintchr$(14);:poke53272,20
+ 9062 poke648,196:return
+ 9070 gosub9050:iff=0thenreturn
+ 9071 if(peek(53272)and14)=4thenpoke53272,22:return
+ 9072 poke53272,20:return
+ 9100 diml$,a$(14),b$(14),k$(21),w$(28),m%(12),w(28,2),k%(15,15),fs%(127,1)
+ 9101 dimc$(3),n$(4),p(4),r$(4)
+ 9102 c$(0)="^":c$(1)="{rvon}_":c$(2)="{rvon}^":c$(3)="_"
+ 9106 q=830:forii=qtoq+42:readb%:pokeii,b%:next:rem distremove
+ 9107 data173,225,244,201,201,240,14,32,155,183,134,211,32,155,183::rem distremove
+ 9108 data32,140,232,76,19,171,32,121,0,32,155,231,134,211,32,121:rem distremove
+ 9109 data0,32,155,231,134,214,32,121,0,76,8,245:rem distremove
+ 9110 forii=0to14:reada$(ii),b$(ii):next
+ 9112 datafeurigen,drachen,geschlachteten,lamm,lustigen,halbling
+ 9114 datagoldenen,l[wen,sterbenden,schwan,heiligen,walfisch,alten,gnom
+ 9116 datablutigen,bartgesicht,mutigen,zwerg,gro~en,ork,weisen,schamanen
+ 9118 dataw]rzigen,schwein,deftigen,rind,singenden,barden,tauben,troll
+ 9130 forii=0to21:readk$(ii):next:l$="                                       "
+ 9132 data"{rvon}{brn} {rvof}","{rvof} ","{orng}{rvon}<{rvof}","{lgrn}{rvon}~{rvof}","{rvof}{yel}*","{rvof}{yel}*","{rvof}{yel}*","{rvof}{grn}@","{rvof}{grn}@","{red}{rvon}@{rvof}","{red}{rvon}@{rvof}"
+ 9134 data"{rvof}{grn}@","{red}{rvon}@{rvof}","{pur}{rvon}>{rvof}","{pur}{rvon}@{rvof}","{wht}{rvon}@{rvof}","{rvof}{gry1}1","{rvof}{gry1}2","{rvof}{gry1}3","{rvof}{gry1}4","{rvof}{gry1}5","{rvof}{gry1}6"
+ 9140 forii=1to28:readw$(ii):next
+ 9142 data"{gry1}dolch +3        ","{gry1}speer +4        ","{gry1}kurzschwert +5  ":rem 1-12
+ 9144 data"{gry2}handaxt +6      ","{gry2}nunchaku +7     ","{gry2}streitkolben +8 "
+ 9146 data"{gry2}kriegsbeil +10  ","{gry3}morgenstern +12 ","{gry3}kriegshammer +14"
+ 9148 data"{gry3}streitaxt +16   ","{gry3}runenhammer +18 ","{gry3}gorkons axt +20 "
+ 9160 data"{brn}lynxs zauberkarte","{red}adtbm-elixir","{gry2}pats waffendoppler":rem 13-20
+ 9162 data"{pur}shmendrics amulett","{lred}camis feenklatsche","{grn}jammets glasmurmeln"
+ 9164 data"{orng}targas schutzzauber","{yel}heilige granate"
+ 9170 data"{cyn}zwergengin  {lred}+50% {pur}+0.5","{cyn}igel-met    {lred}+20% {pur}+0.2":rem 21-28
+ 9172 data"{cyn}elfenwein   {lred}+10% {pur}+0.4","{cyn}orkbier     {lred}+ 5% {pur}+1.0"
+ 9173 data"{cyn}hobbitbier  {lred}+30% {pur}+0.4","{cyn}drachensake {lred}+ 5% {pur}+2.0"
+ 9174 data"{cyn}1570er br\u {lred}+40% {pur}+1.7","{cyn}trollrum    {lred}+25% {pur}+2.5"
+ 9190 forii=1to28:readw(ii,.):readw(ii,1):w(ii,2)=.:next:return
+ 9192 data3,,4,4,5,7,6,11,7,16,8,22,10,30,12,40,14,60,16,100,18,150,20,210:rem weapons
+ 9194 data0,10,,7,,20,,15,,4,,2,,6,,270:rem items
+ 9196 data50,.5,20,.2,10,.4,5,1,30,.4,5,2,40,1.7,25,2.5:rem drinks
+ 9200 ifpeek(52992)=76thenifpeek(789)<>207thensys52992:rem start music
+ 9201 return
+ 9250 ifpeek(789)=207thensys52995:return:rem stop music, inits sid for sfx
+ 9251 ifpeek(52992)<>76thengosub9800:rem no music helper, init sid for sfx, distremove
+ 9252 return
+ 9260 ifpeek(789)<>207thenreturn:rem pause music
+ 9261 ifpeek(1020)<>52thenpoke1020,52:pokesi+24,0:return
+ 9262 poke1020,0:pokesi+24,15:return
+ 9270 gosub9200:gosub20:gosub9250:return
+ 9290 id=peek(186):open1,id,15:close1:ifstthenid=0
+ 9291 return
+ 9300 gosub9290:ifid<4then9330
+ 9305 gosub9260:open1,id,15,"r:ruhm=ruhm":input#1,a%:close1
+ 9306 ifa%<>63then9330
+ 9310 open1,id,2,"ruhm,s,r":forb=0to4:input#1,n$(b),p(b),r$(b):next:close1
+ 9311 gosub9260:return
+ 9320 gosub9290:ifid>3thengosub9260:open1,id,15,"s:ruhm":close1
+ 9325 ifid<4thenreturn:rem device is tape or not ready = no save
+ 9326 open1,id,2,"ruhm,s,w":forb=0to4:print#1,n$(b)","p(b)","r$(b):next:close1
+ 9327 open1,id,15,"ui":close1:return:rem drive reset
+ 9328 gosub9260:return
+ 9330 n$(0)="alrik":n$(1)="borim":n$(2)="cadrix":n$(3)="durgin":n$(4)="enlag"
+ 9331 pu=6000:forb=0to4:p(b)=pu:gosub930
+ 9332 r$(b)="{gry1} ..... {cyn}"+r$:pu=int(pu/2):next:gosub9290:goto9325
+ 9600 rem print"{home}1-8 9=fx":geta$:ifa$=""then9600
+ 9602 rem ifa$=" "thenreturn
+ 9604 rem z=val(a$):poke646,z:printa$;:rem pk%=168:kw%=99:k$="orkus":gosub570
+ 9606 rem onzgosub9610,9620,9630,9640,9650,9660,9670,9680,9690:goto9600
+ 9610 pokesi+11,33:tw=8:gosub20:pokesi+11,32:return:rem bell
+ 9620 pokesi+11,129:tw=14:gosub20:pokesi+11,128:return:rem splash
+ 9630 pokesi+4,129:tw=4:gosub20:pokesi+4,128:return:rem step
+ 9640 pokesi+11,17:tw=8:gosub20:pokesi+11,16:return:rem pling
+ 9650 pokesi+18,33:tw=8:gosub20:pokesi+18,32:return:rem beep
+ 9660 pokesi+4,65:tw=8:gosub20:pokesi+4,64:return:rem tsching
+ 9670 pokesi+18,129:tw=3:gosub20:pokesi+18,128:return:rem hit
+ 9680 pokesi+18,17:tw=8:gosub20:pokesi+18,16:return:rem blip
+ 9690 sysq,1,20,"{wht}du k\mpfst wie ein";:a$="e kuh!":ifpm>.5thena$="e lahme ente!"
+ 9691 ifpm>1thena$=" betrunkener affe!"
+ 9692 ifpm>1.5thena$=" flinkes wiesel!"
+ 9693 ifpm>2thena$=" mutiger l[we!"
+ 9694 ifpm>2.5thena$="e t[dliche schlange!"
+ 9695 ifpm>3thena$=" feuriger drache!"
+ 9696 printa$;
+ 9698 pokesi+1,70:pokesi+6,2*16+9:a%=kw%/8:ifpk%>kw%thena%=pk%/8
+ 9699 forx=.to8:z%=rnd(.)*6:ifz%=.thenpokesi+4,65
+ 9700 sysq,1,23,k$"{red}"tab(10);:i=int(a%*x+rnd(.)*a%):ifi>kw%theni=kw%
+ 9702 gosub9720:sysq,1,22,"{lgrn}kraft    {grn}";:i=int(a%*x+rnd(.)*a%):ifi>pk%theni=pk%
+ 9706 gosub9720:pokesi+18,129:tw=5:gosub20:pokesi+4,64:pokesi+18,128
+ 9715 tw=rnd(.)*17+5:gosub20:pokesi+15,rnd(.)*100+90:next
+ 9716 pokesi+15,26:pokesi+1,11:pokesi+6,2*16+2:return
+ 9720 c%=i/8:printleft$("{rvon}"+l$,c%+1);
+ 9725 b%=i-c%*8:printmid$("{rvof} {rvof}{CBM-G}{rvof}{CBM-H}{rvof}{CBM-J}{rvof}{CBM-K}{rvon}{CBM-L}{rvon}{CBM-N}{rvon}{CBM-M}",b%+b%+1,2)"{rvof}"i"{left}   ";:return
+ 9800 restore:forii=0to23:pokesi+ii,0:next:pokesi+24,15:rem distremove
+ 9805 i=0:pokesi+3,7:pokesi+2,7:forx=1to3:readfh,fl,an,as,ha,au:rem distremove
+ 9810 pokesi+6+i,ha*16+au:pokesi+5+i,an*16+as:pokesi+1+i,fh:pokesi+i,fl:rem distremove
+ 9815 i=i+7:next:ha=0:return:rem distremove
+ 9900 ifs<0thens=0
+ 9910 ifs>lthenifs-l<10thens=l-int(rnd(1)*10)+3
+ 9920 ifl-s<1thens=l
+ 9930 return
