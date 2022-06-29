@@ -141,7 +141,7 @@ var,Z%,
 var,Z,
 var,Z$,
 var,ZE,line cursor pos
-var,ZO,
+var,ZO%,counter for the mission Zocker (Gambler)
 sub,20,wait tw 60th secs
 sub,25,convert pm to o$
 sub,26,convert o to o$
