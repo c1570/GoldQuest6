@@ -6,6 +6,12 @@ DCWD=$(pwd)
 GQLANG=${GQLANG:-de}
 mkdir -p build
 
+echo "*** Building docs using Crank the PRINT"
+# just build the HTML, ignoring other CtP output
+(cp "gq6_$GQLANG.prg" "$DBUILD/input.prg" ; cp -a labels.csv "$DBUILD/" ; cd "$DBUILD" ; "$DCWD/../cranktheprint/cranktheprint") > /dev/null
+perl -i -pe 's/<body>/<body><a href="https:\/\/github.com\/c1570\/GoldQuest6">Back to Gold Quest 6 GitHub page<\/a><br\/><small>Using font by <a href="https:\/\/style64.org\/c64-truetype">Style<\/a><\/small><br\/>/gm' "$DBUILD/output.html"
+cp "$DBUILD/output.html" "$DCWD/docs/gq6_$GQLANG.html"
+
 echo "*** Optimizations for Blitz"
 echo "Input PRG length: $(stat -c%s gq6_$GQLANG.prg) bytes"
 petcat -o "$DBUILD/input.txt" "gq6_$GQLANG.prg"
@@ -24,10 +30,6 @@ echo "*** Running Crank the PRINT"
 (cp -a labels.csv "$DBUILD/" ; cd "$DBUILD" ; "$DCWD/../cranktheprint/cranktheprint" ; petcat -o ctp_output.txt output.prg ; mv output.prg ctp_output.prg)
 if grep "sysq," "$DBUILD/ctp_output.txt"; then echo "CtP failed - some sysq still remains. Please check."; exit 1; fi
 echo "CtP output PRG length: $(stat -c%s $DBUILD/ctp_output.prg) bytes"
-
-echo "*** Fix BASIC docs"
-perl -i -pe 's/<body>/<body><a href="https:\/\/github.com\/c1570\/GoldQuest6">Back to Gold Quest 6 GitHub page<\/a><br\/><small>Using font by <a href="https:\/\/style64.org\/c64-truetype">Style<\/a><\/small><br\/>/gm' "$DBUILD/output.html"
-cp "$DBUILD/output.html" "$DCWD/docs/gq6_$GQLANG.html"
 
 echo "*** Building Crank the PRINT helper"
 # xa65: https://www.floodgap.com/retrotech/xa/

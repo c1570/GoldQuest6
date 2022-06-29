@@ -7,9 +7,9 @@ A C64 dungeon crawler written in 99.9% BASIC V2 (with added dwarves).
 
 You can run the plain PRGs using [Paradoxon Basic](https://github.com/c1570/ParadoxonBasicCRT) (without music and charsets then).
 
-Generated code documentation see [docs/gq6_en.html](https://c1570.github.io/GoldQuest6/gq6_en.html) and [docs/gq6_de.html](https://c1570.github.io/GoldQuest6/gq6_de.html).
+Generated code documentation (courtesy of [Crank the PRINT!](https://github.com/c1570/CrankThePRINT)) see **[docs/gq6_en.html](https://c1570.github.io/GoldQuest6/gq6_en.html)** and **[docs/gq6_de.html](https://c1570.github.io/GoldQuest6/gq6_de.html)**.
 
-The full game (including music etc., without the need for Paradoxon) can be built using [make.sh](make.sh).
+The full game (including music etc., without the need for Paradoxon) can be built using **[make.sh](make.sh)**.
 
 You will need [xa65](https://www.floodgap.com/retrotech/xa/), [Crank the PRINT!](https://github.com/c1570/CrankThePRINT), the cross compiler version of the [Blitz!](https://csdb.dk/release/?id=173267) basic compiler, and the [Dali compressor](https://github.com/bboxy/bitfire/tree/master/packer/dali) for the simple build.
 
