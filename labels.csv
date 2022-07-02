@@ -117,7 +117,7 @@ var,TS,targas schutzzauber
 var,TW,delay time (sec/60)
 var,U,status variable (1=trapdoor 2=run from enemy 3=fulgore fight)
 var,U$,
-var,UT,Zähler für DRAGKINGs. Startwert = 6. Sobald der Wert unter 0 gezählt wird werden die NPCs zufällig ermittelt.
+var,UT,Counter for DRAGKINGs. Start value = 6. As soon as the value is counted below 0, the NPCs are determined randomly.
 var,V,
 var,VO%,ring quest remaining orcs count
 var,VQ,ring quest flag
@@ -127,8 +127,8 @@ var,W,
 var,W$(,item labels
 var,W$,
 var,WD,waffendoppler
-var,WE,Anzahl Ork-Wächter (Guard) je Level. Wert wird jeweils zufällig ermittelt.
-var,WI,Anzahl Wichtel (Gnom) je Level. Wert wird jeweils zufällig ermittelt.
+var,WE,number of orc guards per level
+var,WI,number of gnomes per level
 var,WK,
 var,WP,
 var,X,
