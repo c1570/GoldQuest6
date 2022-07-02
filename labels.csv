@@ -116,7 +116,7 @@ var,TR,
 var,TS,targas schutzzauber
 var,TW,delay time (sec/60)
 var,U,status variable (1=trapdoor 2=run from enemy 3=fulgore fight)
-var,U$,
+var,U$
 var,UT,Counter for DRAGKINGs. Start value = 6. As soon as the value is counted below 0, the NPCs are determined randomly.
 var,V,
 var,VO%,ring quest remaining orcs count
