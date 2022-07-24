@@ -1005,7 +1005,7 @@
  9025 ifti<300then9023
  9026 goto9020
  9030 ift$="H"thenifid>3thengosub9260:open1,id,15,"s:ruhm":close1:gosub9330:goto9001
- 9031 ift$="8"ort$="9"thenpoke186,val(t$):gosub9300:goto9001
+ 9031 ift$="8"ort$="9"thenpoke186,val(t$):gosub9300:pu=.:goto9001
  9034 ift$="f"thengosub9070:goto9025
  9035 rem ift$="s"thengosub9250:gosub9600:gosub9200
  9038 return
