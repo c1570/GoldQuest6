@@ -204,11 +204,12 @@
   682 ifk%(bx%,by%)<>1or(bx%=px%andby%=py%)or(bx%=xfandby%=yf)then681
   683 k%(px%,py%)=1:sysq,px%+1,py%+1," ":k%(bx%,by%)=k%:ifka=.thenreturn
   685 sysq,bx%+1,by%+1,k$(k%):return
-  700 sp=peek(211):ze=peek(214):a%=1:poke198,.
-  705 j=peek(56320)and127:ifj<>127then705
+  700 sp=peek(211):ze=peek(214):a%=1:poke198,.:j=-1
+  705 ifpeek(56320)and127<>127then705
   710 ifv=.thensysq,(a%-1)*b%+c%,ze,"{cyn}>";
   711 ifv=1thensysq,0,ze-h+a%,"{cyn}>";
   712 ifv=2thensysq,sp,ze,a%"{left} ";
+  713 ifti<9and(peek(56320)and127)=jthen713
   715 j=peek(56320)and127:gett$:ifj=127thenift$=""thent=.:goto715
   716 ti$="000000"
   717 ift$="w"ort$="a"ort$="j"ort$="{left}"ort$="{up}"thenj=123
@@ -219,7 +220,6 @@
   726 ifj=125orj=119thenifa%<hthena%=a%+1
   728 if(j=111ort$=chr$(13)orv=3)thenift=.then740
   730 ifval(t$)>=1thenifval(t$)<=hthena%=val(t$)
-  731 ifti<9thenif(peek(56320)and127)=jthen731
   732 goto710
   740 t=1:v=.:h=1:b%=.:c%=.:d=.:ifze<24thensysq,sp,ze,""
   742 return
