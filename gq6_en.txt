@@ -1004,7 +1004,7 @@
  9025 ifti<300then9023
  9026 goto9020
  9030 ift$="H"thenifid>3thengosub9260:open1,id,15,"s:fame":close1:gosub9330:goto9001
- 9031 ift$="8"ort$="9"thenpoke186,val(t$):gosub9300:pu=.:goto9001
+ 9031 ift$="8"ort$="9"thenpoke186,val(t$):gosub9300:goto9001
  9034 ift$="f"thengosub9070:goto9025
  9035 rem ift$="s"thengosub9250:gosub9600:gosub9200
  9038 return
@@ -1070,7 +1070,7 @@
  9328 gosub9260:return
  9330 n$(0)="alrik":n$(1)="borim":n$(2)="cadrix":n$(3)="durgin":n$(4)="enlag"
  9331 pu=6000:forb=0to4:p(b)=pu:gosub930
- 9332 r$(b)="{gry1} ..... {cyn}"+r$:pu=int(pu/2):next:gosub9290:goto9325
+ 9332 r$(b)="{gry1} ..... {cyn}"+r$:pu=int(pu/2):next:pu=.:gosub9290:goto9325
  9600 rem print"{home}1-8 9=fx":geta$:ifa$=""then9600
  9602 rem ifa$=" "thenreturn
  9604 rem z=val(a$):poke646,z:printa$;:rem pk%=168:kw%=99:k$="orkus":gosub570
